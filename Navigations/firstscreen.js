@@ -28,26 +28,7 @@ const showAlert = (alertTitle, alertText) =>
     }
   );
 
-/*
-const fetchFonts = () => {
-  return Font.loadAsync({
-    Bahn: require('./assets/bahnschrift.ttf')
-  });
-  };
-*/
-
 const FirstScreen = ({ navigation }) => {
-  /*  const [dataLoaded, setDataLoaded] = useState(false);
-
-  if (!dataLoaded) {
-    return(
-      <AppLoading
-        startAsync={fetchFonts}
-        onFinish={() => setDataLoaded(true)} 
-      />
-    );
-  }
-*/
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
