@@ -1,9 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, Text, View, Image, Dimensions, Alert } from "react-native";
 import GradientButton from "react-native-gradient-buttons";
-import * as Font from "expo-font";
-import { AppLoading } from "expo";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -28,26 +26,7 @@ const showAlert = (alertTitle, alertText) =>
     }
   );
 
-/*
-const fetchFonts = () => {
-  return Font.loadAsync({
-    Bahn: require('./assets/bahnschrift.ttf')
-  });
-  };
-*/
-
 const FirstScreen = ({ navigation }) => {
-  /*  const [dataLoaded, setDataLoaded] = useState(false);
-
-  if (!dataLoaded) {
-    return(
-      <AppLoading
-        startAsync={fetchFonts}
-        onFinish={() => setDataLoaded(true)} 
-      />
-    );
-  }
-*/
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
