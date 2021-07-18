@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, Dimensions, Alert } from "react-native";
+import React from "react";
+import { StyleSheet, View, Image, Dimensions, Alert } from "react-native";
 import GradientButton from "react-native-gradient-buttons";
-import * as Font from "expo-font";
-import { AppLoading } from "expo";
+
+import NameScreen from "../Navigations/namescreen";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -65,7 +65,7 @@ const FirstScreen = ({ navigation }) => {
         radius={7}
         impact
         impactStyle="Light"
-        onPressAction={() => navigation.navigate("SecondScreen")} //showAlert("Device only", "In developing")}
+        onPressAction={() => navigation.navigate("NameScreen")} //showAlert("Device only", "In developing")}
       />
 
       <GradientButton
