@@ -28,7 +28,7 @@ const NameScreen = ({ navigation }) => {
   const customStyle = isActive
     ? {
         //isFocused
-
+        height: 50,
         backgroundColor: "#105cdd",
         flex: 0.7,
         shadowColor: "#000",
@@ -44,6 +44,7 @@ const NameScreen = ({ navigation }) => {
       }
     : {
         //isBlur
+        height: 50,
         backgroundColor: "#f2f2f2",
         flex: 0.7,
         shadowColor: "#000",
