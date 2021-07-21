@@ -80,7 +80,6 @@ const FirstScreen = ({ navigation }) => {
 
           elevation: 3,
           borderRadius: 7,
-          marginTop: 10,
         }}
         gradientBegin="#fdfdff"
         gradientEnd="#fdfdff"
@@ -103,7 +102,6 @@ const FirstScreen = ({ navigation }) => {
         height={40}
         width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
         radius={7}
-        impact
         impactStyle="Light"
         onPressAction={() => navigation.navigate("SignUpScene")}
       />
