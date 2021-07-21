@@ -45,7 +45,7 @@ const NameScreen = ({ navigation }) => {
     : {
         //isBlur
         height: 50,
-        backgroundColor: "#f2f2f2",
+        backgroundColor: "#f8f8f8",
         flex: 0.7,
         shadowColor: "#000",
         shadowOffset: {

@@ -63,8 +63,9 @@ const LoginScreen = ({ navigation }) => {
 
       <Image
         style={{
-          width: windowWidth / 1.5 >= 350 ? 350 : windowWidth / 1.5,
-          height: windowHeight / 4.3,
+          marginTop: windowHeight * 0.05,
+          width: windowWidth / 3 >= 175 ? 175 : windowWidth / 3,
+          height: windowHeight / 12,
           resizeMode: "contain",
         }}
         source={require("../assets/Routines_logo.png")}
@@ -126,7 +127,7 @@ const LoginScreen = ({ navigation }) => {
         >
           <Text
             style={{
-              marginTop: 30,
+              marginTop: 25,
               color: "#0359e3",
               fontWeight: "bold",
               textAlign: "left",
@@ -160,8 +161,7 @@ const LoginScreen = ({ navigation }) => {
         text="Login"
         textStyle={{ fontSize: 18 }}
         style={{
-          marginVertical: windowHeight * 0.1,
-          //marginBottom: windowHeight * 0.2,
+          marginVertical: windowHeight * 0.05,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     height: windowHeight,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
   },
 });
 
