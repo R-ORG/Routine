@@ -36,7 +36,7 @@ const FirstScreen = ({ navigation }) => {
           height: windowHeight / 4,
           resizeMode: "contain",
         }}
-        source={require("../assets/Routines_logo.png")}
+        source={require("../../assets/Routines_logo.png")}
       />
 
       <GradientButton
@@ -80,6 +80,7 @@ const FirstScreen = ({ navigation }) => {
 
           elevation: 3,
           borderRadius: 7,
+          marginTop: 10,
         }}
         gradientBegin="#fdfdff"
         gradientEnd="#fdfdff"
@@ -104,7 +105,7 @@ const FirstScreen = ({ navigation }) => {
         radius={7}
         impact
         impactStyle="Light"
-        onPressAction={() => showAlert("Sign up", "Unavailable feature!")}
+        onPressAction={() => navigation.navigate("SignUpScene")}
       />
     </View>
   );
