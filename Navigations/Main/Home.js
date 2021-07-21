@@ -9,27 +9,27 @@ import { firebase } from "../../firebase/config";
 const LogOut = () => {
   firebase.auth().signOut();
 };
-const userId = firebase.auth().currentUser.uid;
-
 // const userId = firebase.auth().currentUser.uid;
-const db = firebase.firestore();
 
-// Still on testing
+// // const userId = firebase.auth().currentUser.uid;
+// const db = firebase.firestore();
 
-db.collection("users")
-  .doc(userId)
-  .get()
-  .then((snapshot) => {
-    if (snapshot.exist) {
-      console.log("Document data: ", snapshot.data());
-    } else {
-      //snapshot.data() will be undefined this time
-      console.log("No such document!");
-    }
-  })
-  .catch((error) => {
-    console.log("Error getting document: ", error);
-  });
+// // Still on testing
+
+// db.collection("users")
+//   .doc(userId)
+//   .get()
+//   .then((snapshot) => {
+//     if (snapshot.exist) {
+//       console.log("Document data: ", snapshot.data());
+//     } else {
+//       //snapshot.data() will be undefined this time
+//       console.log("No such document!");
+//     }
+//   })
+//   .catch((error) => {
+//     console.log("Error getting document: ", error);
+//   });
 
 export default function HomeScreen() {
   return (

@@ -75,21 +75,21 @@ const NameScreen = ({ navigation }) => {
         <Image
           style={{
             width: windowWidth / 1.5 >= 350 ? 350 : windowWidth / 1.5,
-            height: windowHeight / 4.3,
+            height: windowHeight / 4.6,
             resizeMode: "contain",
           }}
           source={require("../../assets/Routines_logo.png")}
         />
 
-        <Text
+        {/*<Text
           style={{
-            marginVertical: 15,
-            color: "#0359e3",
+            marginVertical: 10,
+            color: "#555", //"#0359e3",
             fontWeight: "bold",
           }}
         >
           You'd like to be called...{" "}
-        </Text>
+        </Text> */}
 
         <View
           style={{
@@ -116,7 +116,7 @@ const NameScreen = ({ navigation }) => {
           text="Let's start!"
           textStyle={{ fontSize: 18 }}
           style={{
-            marginTop: windowHeight * 0.05,
+            marginTop: windowHeight * 0.08,
 
             shadowColor: "#000",
             shadowOffset: {
@@ -133,35 +133,22 @@ const NameScreen = ({ navigation }) => {
           gradientEnd="#0041b1"
           gradientDirection="radial"
           height={45}
-          width={windowWidth / 2 >= 250 ? 250 : windowWidth / 2}
+          width={windowWidth / 2.2 >= 225 ? 225 : windowWidth / 2.2}
           radius={7}
           impact
           impactStyle="Light"
           onPressAction={() => alert("In developing")} // navigation.navigate("NameScreen")}
         />
         <GradientButton
-          text="Back to Home Screen"
-          textStyle={{ fontSize: 18 }}
-          style={{
-            marginTop: 20,
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
-
-            elevation: 3,
-            borderRadius: 7,
-          }}
-          gradientBegin="#0359e3"
-          gradientEnd="#0041b1"
+          text="Back to Home"
+          textStyle={{ fontSize: 14, color: "#0359e3" }}
+          style={{ marginVertical: 50 }}
+          gradientBegin={styles.container.backgroundColor}
+          gradientEnd={styles.container.backgroundColor}
           gradientDirection="radial"
-          height={45}
-          width={windowWidth / 2 >= 250 ? 250 : windowWidth / 2}
+          height={40}
+          width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
           radius={7}
-          impact
           impactStyle="Light"
           onPressAction={() => navigation.navigate("FirstScreen")} // navigation.navigate("NameScreen")}
         />
@@ -172,7 +159,8 @@ const NameScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: windowHeight * 1.1,
+    //height: windowHeight * 1,
+    flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
