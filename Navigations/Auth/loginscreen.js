@@ -86,7 +86,7 @@ const LoginScreen = ({ navigation }) => {
 
         <Image
           style={{
-            marginTop: windowHeight * 0.1,
+            marginTop: windowHeight * 0.05,
             width: windowWidth / 3 >= 175 ? 175 : windowWidth / 3,
             height: windowHeight / 12,
             resizeMode: "contain",
@@ -200,35 +200,22 @@ const LoginScreen = ({ navigation }) => {
           gradientEnd="#0041b1"
           gradientDirection="radial"
           height={45}
-          width={windowWidth / 2 >= 250 ? 250 : windowWidth / 2}
+          width={windowWidth / 2.5 >= 210 ? 210 : windowWidth / 2.5}
           radius={7}
           impact
           impactStyle="Light"
           onPressAction={() => onLoginPress()} //need authorize function
         />
         <GradientButton
-          text="Back to Home Screen"
-          textStyle={{ fontSize: 18 }}
-          style={{
-            marginTop: 20,
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
-
-            elevation: 3,
-            borderRadius: 7,
-          }}
-          gradientBegin="#0359e3"
-          gradientEnd="#0041b1"
+          text="Back to Home"
+          textStyle={{ fontSize: 14, color: "#0359e3" }}
+          style={{ marginVertical: 35 }}
+          gradientBegin={styles.container.backgroundColor}
+          gradientEnd={styles.container.backgroundColor}
           gradientDirection="radial"
-          height={45}
-          width={windowWidth / 2 >= 250 ? 250 : windowWidth / 2}
+          height={40}
+          width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
           radius={7}
-          impact
           impactStyle="Light"
           onPressAction={() => navigation.navigate("FirstScreen")} //need authorize function
         />
@@ -239,10 +226,11 @@ const LoginScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: windowHeight * 1.2,
+    //height: windowHeight * 1.2,
+    flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
   },
 });
 

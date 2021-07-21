@@ -112,7 +112,7 @@ const SignUpScreen = ({ navigation }) => {
           style={{
             marginTop: windowHeight * 0.1,
             width: windowWidth / 3 >= 175 ? 175 : windowWidth / 3,
-            height: windowHeight / 12,
+            height: windowHeight / 15,
             resizeMode: "contain",
           }}
           source={require("../../assets/Routines_logo.png")}
@@ -131,7 +131,8 @@ const SignUpScreen = ({ navigation }) => {
           >
             <Text
               style={{
-                marginVertical: 10,
+                marginTop: 20,
+                marginBottom: 10,
                 color: "#0359e3",
                 fontWeight: "bold",
                 textAlign: "left",
@@ -174,13 +175,14 @@ const SignUpScreen = ({ navigation }) => {
           >
             <Text
               style={{
-                marginVertical: 10,
+                marginTop: 20,
+                marginBottom: 10,
                 color: "#0359e3",
                 fontWeight: "bold",
                 textAlign: "left",
               }}
             >
-              Your username{" "}
+              You'd like to be called...{" "}
             </Text>
           </View>
 
@@ -217,7 +219,7 @@ const SignUpScreen = ({ navigation }) => {
           >
             <Text
               style={{
-                marginTop: 25,
+                marginTop: 20,
                 color: "#0359e3",
                 fontWeight: "bold",
                 textAlign: "left",
@@ -261,7 +263,7 @@ const SignUpScreen = ({ navigation }) => {
           >
             <Text
               style={{
-                marginTop: 25,
+                marginTop: 20,
                 color: "#0359e3",
                 fontWeight: "bold",
                 textAlign: "left",
@@ -320,28 +322,15 @@ const SignUpScreen = ({ navigation }) => {
           onPressAction={() => onSignUpPressed()} //need authorize function
         />
         <GradientButton
-          text="Back to Home Screen"
-          textStyle={{ fontSize: 18 }}
-          style={{
-            marginTop: 20,
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
-
-            elevation: 3,
-            borderRadius: 7,
-          }}
-          gradientBegin="#0359e3"
-          gradientEnd="#0041b1"
+          text="Back to Home"
+          textStyle={{ fontSize: 14, color: "#0359e3" }}
+          style={{ marginVertical: 30 }}
+          gradientBegin={styles.container.backgroundColor}
+          gradientEnd={styles.container.backgroundColor}
           gradientDirection="radial"
-          height={45}
-          width={windowWidth / 2 >= 250 ? 250 : windowWidth / 2}
+          height={40}
+          width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
           radius={7}
-          impact
           impactStyle="Light"
           onPressAction={() => navigation.navigate("FirstScreen")} //need authorize function
         />
@@ -352,10 +341,11 @@ const SignUpScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: windowHeight * 1.2,
+    //height: windowHeight * 1.2,
+    flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
   },
 });
 
