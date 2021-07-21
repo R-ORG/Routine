@@ -3,8 +3,6 @@ import React from "react";
 import { StyleSheet, View, Image, Dimensions, Alert } from "react-native";
 import GradientButton from "react-native-gradient-buttons";
 
-import NameScreen from "../Navigations/namescreen";
-
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -38,7 +36,7 @@ const FirstScreen = ({ navigation }) => {
           height: windowHeight / 4,
           resizeMode: "contain",
         }}
-        source={require("../assets/Routines_logo.png")}
+        source={require("../../assets/Routines_logo.png")}
       />
 
       <GradientButton
@@ -69,8 +67,8 @@ const FirstScreen = ({ navigation }) => {
       />
 
       <GradientButton
-        text="LOG IN AND SYNC 🔒"
-        textStyle={{ fontSize: 18, color: "#bbb" }}
+        text="LOG IN AND SYNC"
+        textStyle={{ fontSize: 18, color: "#0359e3" }}
         style={{
           shadowColor: "#000",
           shadowOffset: {
@@ -79,13 +77,13 @@ const FirstScreen = ({ navigation }) => {
           },
           shadowOpacity: 0.2,
           shadowRadius: 3,
-          marginTop: 10,
 
           elevation: 3,
           borderRadius: 7,
+          marginTop: 10,
         }}
-        gradientBegin="#ddd"
-        gradientEnd="#ddd"
+        gradientBegin="#fdfdff"
+        gradientEnd="#fdfdff"
         gradientDirection="radial"
         height={45}
         width={windowWidth / 1.5 >= 350 ? 350 : windowWidth / 1.5}
@@ -107,7 +105,7 @@ const FirstScreen = ({ navigation }) => {
         radius={7}
         impact
         impactStyle="Light"
-        onPressAction={() => showAlert("Sign up", "Unavailable feature!")}
+        onPressAction={() => navigation.navigate("SignUpScene")}
       />
     </View>
   );
