@@ -182,7 +182,7 @@ const SignUpScreen = ({ navigation }) => {
                 textAlign: "left",
               }}
             >
-              Your username{" "}
+              You'd like to be called...{" "}
             </Text>
           </View>
 
