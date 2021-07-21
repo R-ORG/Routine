@@ -107,7 +107,8 @@ const NameScreen = ({ navigation }) => {
         text="Let's start!"
         textStyle={{ fontSize: 18 }}
         style={{
-          marginVertical: 75,
+          marginVertical: windowHeight * 0.1,
+          marginBottom: windowHeight * 0.25,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,
@@ -135,7 +136,7 @@ const NameScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: windowHeight * 1.1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
