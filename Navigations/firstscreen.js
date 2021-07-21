@@ -79,6 +79,7 @@ const FirstScreen = ({ navigation }) => {
           },
           shadowOpacity: 0.2,
           shadowRadius: 3,
+          marginTop: 10,
 
           elevation: 3,
           borderRadius: 7,
@@ -91,9 +92,7 @@ const FirstScreen = ({ navigation }) => {
         radius={7}
         impact
         impactStyle="Light"
-        onPressAction={() =>
-          showAlert("Log in and Sync", "Unavailable feature!")
-        }
+        onPressAction={() => navigation.navigate("LoginScreen")}
       />
 
       <GradientButton
