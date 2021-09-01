@@ -8,6 +8,8 @@ import FirstScreen from "./Navigations/Auth/firstscreen";
 import NameScreen from "./Navigations/Auth/namescreen";
 import LoginScreen from "./Navigations/Auth/loginscreen";
 import SignUpScreen from "./Navigations/Auth/signupscreen";
+import SetNameRoutine from "./Navigations/New_routine/setnameroutine"; //testing
+import SetIconRoutine from "./Navigations/New_routine/seticonroutine"; //testing
 import { firebase } from "./firebase/config";
 
 // Main Screen
@@ -77,6 +79,18 @@ export default function App() {
             <Stack.Screen
               name="SignUpScene"
               component={SignUpScreen}
+              options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
+              name="SetNameRoutine"
+              component={SetNameRoutine}
+              options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
+              name="SetIconRoutine"
+              component={SetIconRoutine}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

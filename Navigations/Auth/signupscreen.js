@@ -194,7 +194,7 @@ const SignUpScreen = ({ navigation }) => {
             <TextInput
               theme={userFocus ? focusTheme : blurTheme}
               style={userFocus ? focusStyle : blurStyle}
-              placeholder="Username"
+              placeholder="Your name"
               placeholderTextColor="#aab"
               underlineColor="fff"
               selectionColor="#abf"

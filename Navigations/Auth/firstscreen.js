@@ -105,6 +105,20 @@ const FirstScreen = ({ navigation }) => {
         impactStyle="Light"
         onPressAction={() => navigation.navigate("SignUpScene")}
       />
+
+      <GradientButton
+        text="Test - Naming new routine"
+        textStyle={{ fontSize: 14, color: "#888" }}
+        style={{ marginVertical: 30 }}
+        gradientBegin={styles.container.backgroundColor}
+        gradientEnd={styles.container.backgroundColor}
+        gradientDirection="radial"
+        height={40}
+        width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
+        radius={7}
+        impactStyle="Light"
+        onPressAction={() => navigation.navigate("SetNameRoutine")}
+      />
     </View>
   );
 };

@@ -4,17 +4,39 @@ import {
   StyleSheet,
   View,
   Image,
+  Text,
   Dimensions,
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
+
 import { TextInput } from "react-native-paper";
 import GradientButton from "react-native-gradient-buttons";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const NameScreen = ({ navigation }) => {
+const showAlert = (alertTitle, alertText) =>
+  Alert.alert(
+    alertTitle,
+    alertText,
+    [
+      {
+        text: "OK",
+        //onPress: () => Alert.alert("OK Pressed"),
+        style: "cancel",
+      },
+    ],
+    {
+      cancelable: true,
+      /* onDismiss: () =>
+        Alert.alert(
+          "This alert was dismissed by tapping outside of the alert dialog."
+        ), */
+    }
+  );
+
+const SetNameRoutine = ({ navigation }) => {
   const [text, setText] = React.useState("");
   const [isActive, setIsActive] = React.useState(false);
   const customTheme = isActive
@@ -71,24 +93,27 @@ const NameScreen = ({ navigation }) => {
       <View style={styles.container}>
         <StatusBar style="auto" />
 
-        <Image
-          style={{
-            width: windowWidth / 1.5 >= 350 ? 350 : windowWidth / 1.5,
-            height: windowHeight / 4.6,
-            resizeMode: "contain",
-          }}
-          source={require("../../assets/Routines_logo.png")}
-        />
+        <Text style={{ height: 120 }}>
+          Step
+          <Image
+            style={{
+              width: 60,
+              height: 60,
+              resizeMode: "contain",
+            }}
+            source={require("../../assets/step1.png")}
+          />
+        </Text>
 
-        {/*<Text
+        <Text
           style={{
             marginVertical: 10,
             color: "#555", //"#0359e3",
             fontWeight: "bold",
           }}
         >
-          You'd like to be called...{" "}
-        </Text> */}
+          Name your new routine{" "}
+        </Text>
 
         <View
           style={{
@@ -100,7 +125,7 @@ const NameScreen = ({ navigation }) => {
           <TextInput
             theme={customTheme}
             style={customStyle}
-            placeholder="Your name..."
+            placeholder="Abc"
             placeholderTextColor="#aab"
             underlineColor="fff"
             selectionColor="#abf"
@@ -112,7 +137,7 @@ const NameScreen = ({ navigation }) => {
         </View>
 
         <GradientButton
-          text="Let's start!"
+          text="Next"
           textStyle={{ fontSize: 18 }}
           style={{
             marginTop: windowHeight * 0.08,
@@ -132,21 +157,21 @@ const NameScreen = ({ navigation }) => {
           gradientEnd="#0041b1"
           gradientDirection="radial"
           height={45}
-          width={windowWidth / 2.2 >= 225 ? 225 : windowWidth / 2.2}
+          width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
           radius={7}
           impact
           impactStyle="Light"
-          onPressAction={() => alert("In developing")} // navigation.navigate("NameScreen")}
+          onPressAction={() => navigation.navigate("SetIconRoutine")} // navigation.navigate("NameScreen")}
         />
         <GradientButton
-          text="Back to Home"
+          text="Back"
           textStyle={{ fontSize: 14, color: "#0359e3" }}
-          style={{ marginVertical: 50 }}
+          style={{ marginVertical: 20 }}
           gradientBegin={styles.container.backgroundColor}
           gradientEnd={styles.container.backgroundColor}
           gradientDirection="radial"
           height={40}
-          width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
+          width={windowWidth / 4 >= 120 ? 120 : windowWidth / 4}
           radius={7}
           impactStyle="Light"
           onPressAction={() => navigation.navigate("FirstScreen")} // navigation.navigate("NameScreen")}
@@ -158,7 +183,6 @@ const NameScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    //height: windowHeight * 1,
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
@@ -166,4 +190,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NameScreen;
+export default SetNameRoutine;
