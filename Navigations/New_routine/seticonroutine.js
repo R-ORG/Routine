@@ -39,7 +39,7 @@ const SetIconRoutine = ({ navigation }) => {
               height: 60,
               resizeMode: "contain",
             }}
-            source={require("../../assets/step3.png")}
+            source={require("../../assets/step2.png")}
           />
         </Text>
 
