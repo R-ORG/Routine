@@ -10,6 +10,7 @@ import LoginScreen from "./Navigations/Auth/loginscreen";
 import SignUpScreen from "./Navigations/Auth/signupscreen";
 import SetNameRoutine from "./Navigations/New_routine/setnameroutine"; //testing
 import SetIconRoutine from "./Navigations/New_routine/seticonroutine"; //testing
+import AchieveScreen from "./Navigations/Auth/achievescreen";
 import { firebase } from "./firebase/config";
 
 // Main Screen
@@ -41,61 +42,72 @@ export default function App() {
     });
   }, []);
 
+  // return (
+  //   <>
+  //     {!loaded ? (
+  //       <View style={{ flex: 1, justifyContent: "center" }}>
+  //         <Text>Loading...</Text>
+  //       </View>
+  //     ) : loggedIn ? (
+  //       <NavigationContainer>
+  //         <Stack.Navigator>
+  //           <Stack.Screen
+  //             name="Home"
+  //             component={HomeScreen}
+  //             options={{ headerShown: false }}
+  //           />
+  //         </Stack.Navigator>
+  //       </NavigationContainer>
+  //     ) : (
+  //       <NavigationContainer>
+  //         <Stack.Navigator>
+  //           <Stack.Screen
+  //             name="FirstScreen"
+  //             component={FirstScreen}
+  //             options={{ headerShown: false }}
+  //           />
+
+  //           <Stack.Screen
+  //             name="NameScreen"
+  //             component={NameScreen}
+  //             options={{ headerShown: false }}
+  //           />
+  //           <Stack.Screen
+  //             name="LoginScreen"
+  //             component={LoginScreen}
+  //             options={{ headerShown: false }}
+  //           />
+  //           <Stack.Screen
+  //             name="SignUpScene"
+  //             component={SignUpScreen}
+  //             options={{ headerShown: false }}
+  //           />
+
+  //           <Stack.Screen
+  //             name="SetNameRoutine"
+  //             component={SetNameRoutine}
+  //             options={{ headerShown: false }}
+  //           />
+
+  //           <Stack.Screen
+  //             name="SetIconRoutine"
+  //             component={SetIconRoutine}
+  //             options={{ headerShown: false }}
+  //           />
+  //         </Stack.Navigator>
+  //       </NavigationContainer>
+  //     )}
+  //   </>
+  // );
   return (
-    <>
-      {!loaded ? (
-        <View style={{ flex: 1, justifyContent: "center" }}>
-          <Text>Loading...</Text>
-        </View>
-      ) : loggedIn ? (
-        <NavigationContainer>
+    <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-              name="Home"
-              component={HomeScreen}
+              name="Achieve"
+              component={AchieveScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
         </NavigationContainer>
-      ) : (
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="FirstScreen"
-              component={FirstScreen}
-              options={{ headerShown: false }}
-            />
-
-            <Stack.Screen
-              name="NameScreen"
-              component={NameScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="LoginScreen"
-              component={LoginScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="SignUpScene"
-              component={SignUpScreen}
-              options={{ headerShown: false }}
-            />
-
-            <Stack.Screen
-              name="SetNameRoutine"
-              component={SetNameRoutine}
-              options={{ headerShown: false }}
-            />
-
-            <Stack.Screen
-              name="SetIconRoutine"
-              component={SetIconRoutine}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      )}
-    </>
   );
 }

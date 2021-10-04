@@ -18,13 +18,17 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-expo-image-cache": "^4.1.0",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-gradient-buttons": "^2.0.2",
+    "react-native-gradient-card-view": "WrathChaos/react-native-gradient-card-view#expo",
     "react-native-keyboard-aware-scroll-view": "^0.9.4",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-paper": "^4.9.2",
     "react-native-reanimated": "~2.2.0",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
+    "react-native-svg-charts": "^5.4.0",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
