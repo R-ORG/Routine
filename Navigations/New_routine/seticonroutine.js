@@ -57,7 +57,6 @@ const SetIconRoutine = ({ navigation }) => {
           selectedValue={selectedValue}
           style={{ height: 50, width: 250, shadowColor: "#000" }}
           onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-          mode="dropdown"
         >
           <Picker.Item label="     ...    (None)" value="none" />
           <Picker.Item label="    📒    Doing homework" value="homework" />
@@ -65,10 +64,7 @@ const SetIconRoutine = ({ navigation }) => {
           <Picker.Item label="    🥤    Drinking water" value="water" />
           <Picker.Item label="    🍝    Eating" value="eat" />
           <Picker.Item label="    🎮    E-sports" value="nec" />
-          <Picker.Item
-            label="    🎵    Listening to music     "
-            value="music"
-          />
+          <Picker.Item label="    🎵    Listening to music" value="music" />
           <Picker.Item label="    💊    Medicines" value="med" />
           <Picker.Item label="    🚭    No smoking" value="no-smoking" />
           <Picker.Item label="    🏃‍♀️    Running" value="run" />
@@ -118,7 +114,7 @@ const SetIconRoutine = ({ navigation }) => {
           width={windowWidth / 4 >= 120 ? 120 : windowWidth / 4}
           radius={7}
           impactStyle="Light"
-          onPressAction={() => navigation.navigate("SetNameRoutine")} // navigation.navigate("NameScreen")}
+          onPressAction={() => navigation.navigate("SetAttributeRoutine")} // navigation.navigate("NameScreen")}
         />
       </View>
     </TouchableWithoutFeedback>
