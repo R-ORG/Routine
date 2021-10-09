@@ -161,7 +161,7 @@ const SetNameRoutine = ({ navigation }) => {
           radius={7}
           impact
           impactStyle="Light"
-          onPressAction={() => navigation.navigate("SetIconRoutine")} // navigation.navigate("NameScreen")}
+          onPressAction={() => navigation.navigate("SetAttributeRoutine")} // navigation.navigate("NameScreen")}
         />
         <GradientButton
           text="Back"
