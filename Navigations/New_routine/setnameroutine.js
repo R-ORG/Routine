@@ -36,9 +36,10 @@ const showAlert = (alertTitle, alertText) =>
     }
   );
 
-const SetNameRoutine = ({ navigation }) => {
-  const [text, setText] = React.useState("");
+const SetNameRoutine = ({ navigation, route }) => {
   const [isActive, setIsActive] = React.useState(false);
+  // first time enter this route (route.params is null) we need to create new routine
+  let routine = !route.params ? { name: "", att: "", icon: "" } : route.params;
   const customTheme = isActive
     ? {
         //isFocused
@@ -129,8 +130,8 @@ const SetNameRoutine = ({ navigation }) => {
             placeholderTextColor="#aab"
             underlineColor="fff"
             selectionColor="#abf"
-            value={text}
-            onChangeText={(text) => setText(text)}
+            value={routine.name}
+            onChangeText={(text) => (routine.name = text)}
             onFocus={() => setIsActive(true)}
             onBlur={() => setIsActive(false)}
           />
@@ -161,7 +162,9 @@ const SetNameRoutine = ({ navigation }) => {
           radius={7}
           impact
           impactStyle="Light"
-          onPressAction={() => navigation.navigate("SetAttributeRoutine")} // navigation.navigate("NameScreen")}
+          onPressAction={
+            () => navigation.navigate("SetAttributeRoutine", routine) // pass routine as parameter of this route
+          } // navigation.navigate("NameScreen")}
         />
         <GradientButton
           text="Back"
@@ -174,7 +177,8 @@ const SetNameRoutine = ({ navigation }) => {
           width={windowWidth / 4 >= 120 ? 120 : windowWidth / 4}
           radius={7}
           impactStyle="Light"
-          onPressAction={() => navigation.navigate("FirstScreen")} // navigation.navigate("NameScreen")}
+          onPressAction={() => navigation.navigate("FirstScreen")} // user don't want to add new routine so we don't pass routine back
+          // navigation.navigate("NameScreen")}
         />
       </View>
     </TouchableWithoutFeedback>

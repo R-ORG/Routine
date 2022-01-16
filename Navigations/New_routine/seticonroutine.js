@@ -11,17 +11,17 @@ import {
   Picker,
 } from "react-native";
 import GradientButton from "react-native-gradient-buttons";
-
+import { addRoutine } from "../../firebase/firebaseaction";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-
-const SetIconRoutine = ({ navigation }) => {
+import { firebase } from "../../firebase/config";
+const SetIconRoutine = ({ navigation, route }) => {
   const [text, setText] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [Color, setColor] = useState("#555");
   const [showIconPicker, setShowIconPicker] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("java");
-
+  let routine = route.params;
+  const [routineIcon, setSelectedValue] = useState(routine.icon);
   const onSelect = (icon) => {
     setShowIconPicker(false); // fix this
   };
@@ -54,7 +54,7 @@ const SetIconRoutine = ({ navigation }) => {
         </Text>
 
         <Picker
-          selectedValue={selectedValue}
+          selectedValue={routineIcon}
           style={{ height: 50, width: 250, shadowColor: "#000" }}
           onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         >
@@ -101,7 +101,14 @@ const SetIconRoutine = ({ navigation }) => {
           radius={7}
           impact
           impactStyle="Light"
-          onPressAction={() => alert("In developing")} // navigation.navigate("NameScreen")}
+          onPressAction={() => {
+            routine.icon = routineIcon;
+            let user = firebase.auth().currentUser;
+            user
+              ? addRoutine(user.uid, routine)
+              : navigation.navigate("NameScreen");
+            console.log(routine);
+          }} // navigation.navigate("NameScreen")}
         />
         <GradientButton
           text="Back"
@@ -114,7 +121,10 @@ const SetIconRoutine = ({ navigation }) => {
           width={windowWidth / 4 >= 120 ? 120 : windowWidth / 4}
           radius={7}
           impactStyle="Light"
-          onPressAction={() => navigation.navigate("SetAttributeRoutine")} // navigation.navigate("NameScreen")}
+          onPressAction={
+            () => navigation.navigate("SetAttributeRoutine", routine)
+            //pass routine back to set attribute to keep other routine info like name and attribute
+          } // navigation.navigate("NameScreen")}
         />
       </View>
     </TouchableWithoutFeedback>
