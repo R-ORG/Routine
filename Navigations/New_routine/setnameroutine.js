@@ -13,6 +13,7 @@ import {
 import { TextInput } from "react-native-paper";
 import GradientButton from "react-native-gradient-buttons";
 
+import DefaultButton from "../Button.js";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -137,9 +138,9 @@ const SetNameRoutine = ({ navigation, route }) => {
           />
         </View>
 
-        <GradientButton
+        <DefaultButton
           text="Next"
-          textStyle={{ fontSize: 18 }}
+          textStyle={{ fontSize: 19 }}
           style={{
             marginTop: windowHeight * 0.08,
 
