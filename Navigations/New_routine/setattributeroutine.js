@@ -25,22 +25,18 @@ GradientButton.defaultProps = {
   gradientDirection: "radial",
   impactStyle: "Light",
 };
-const SetAttributeRoutine = ({ navigation }) => {
+const SetAttributeRoutine = ({ navigation, route }) => {
   const [isDo, setIsDo] = useState(true); // to do or not to do
   const [routineType, setRoutineType] = useState("a");
   const [reps, setReps] = useState("");
   const [repsFocus, setFocus] = useState(false);
-  const initTime = [
-    { id: "hours", value: 0 },
-    { id: "mins", value: 0 },
-    { id: "sec", value: 0 },
-  ];
   const [duration, setDuration] = useState(new Date());
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     Platform.OS === "ios" ? setShow(true) : shetShow(false);
     setDuration(currentDate);
   };
+  let routine = route.params;
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
@@ -137,7 +133,7 @@ const SetAttributeRoutine = ({ navigation }) => {
                 mode={"time"}
                 display={"spinner"}
                 onChange={onChange}
-              />
+              /> // show time picker if type is duration
             )}
             {
               routineType == "Reps" && (
@@ -163,7 +159,12 @@ const SetAttributeRoutine = ({ navigation }) => {
             text="Next"
             textStyle={{ fontSize: 18 }}
             marginTop={windowHeight * 0.08}
-            onPressAction={() => navigation.navigate("SetIconRoutine")} // navigation.navigate("NameScreen")}
+            onPressAction={() => {
+              routineType == "Reps"
+                ? (routine.att = { isDo: isDo, reps: reps })
+                : (routine.att = { isDo: isDo, duration: duration });
+              navigation.navigate("SetIconRoutine", routine);
+            }} // navigation.navigate("NameScreen")}
           />
           <GradientButton
             text="Back"
@@ -172,7 +173,7 @@ const SetAttributeRoutine = ({ navigation }) => {
             gradientBegin={styles.container.backgroundColor}
             gradientEnd={styles.container.backgroundColor}
             gradientDirection="radial"
-            onPressAction={() => navigation.navigate("SetNameRoutine")} // navigation.navigate("NameScreen")}
+            onPressAction={() => navigation.navigate("SetNameRoutine", routine)} // navigation.navigate("NameScreen")}
           />
         </View>
       </View>
