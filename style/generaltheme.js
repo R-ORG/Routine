@@ -1,13 +1,13 @@
 const focusTheme = {
   colors: {
     text: "#fff",
-    primary: styles.backgroundColor,
+    primary: "#fff",
   },
 };
 const blurTheme = {
   colors: {
     text: "#222",
-    primary: styles.backgroundColor,
+    primary: "#fff",
   },
 };
 export { focusTheme, blurTheme };

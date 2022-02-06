@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import GradientButton from "react-native-gradient-buttons";
-// import * as style from "../style/generalstyle";
-
+import { focusStyle, blurStyle } from "../style/generalstyle.js";
+import { focusTheme, blurTheme } from "../style/generaltheme.js";
 export function DefautlButton(props) {
   const [isFocus, setFocus] = useState(true);
   return props.type == "white" ? (
     <GradientButton
-      style={isFocus ? styles.focusStyle : styles.blurStyle}
-      theme={isFocus ? themes.focusTheme : themes.blurTheme}
+      style={isFocus ? focusStyle : blurStyle}
+      theme={isFocus ? focusTheme : blurTheme}
+      height={props.height}
+      width={props.width}
       textStyle={
         props.textStyle ? props.textStyle : { fontSize: 14, color: "#0359e3" }
       }
-      style={props.style ? props.style : { marginVertical: 20 }}
+      text={props.text}
       gradientBegin={props.gradientBegin ? props.gradientBegin : "#fff"}
       gradientEnd={props.gradientEnd ? props.gradientEnd : "#fff"}
       gradientDirection={
@@ -27,7 +29,11 @@ export function DefautlButton(props) {
     ></GradientButton>
   ) : (
     <GradientButton
-      style={props.style}
+      style={isFocus ? focusStyle : blurStyle}
+      theme={isFocus ? focusTheme : blurTheme}
+      height={props.height}
+      width={props.width}
+      text={props.text}
       gradientBegin={props.gradientBegin ? props.gradientBegin : "#0359E3"}
       gradientEnd={props.gradientEnd ? props.gradientEnd : "#0041b1"}
       gradientDirection={
@@ -40,8 +46,6 @@ export function DefautlButton(props) {
           ? props.onPressAction
           : alert("will add more features in future")
       }
-      text={props.text}
-      textStyle={props.textStyle}
     ></GradientButton>
   );
 }
