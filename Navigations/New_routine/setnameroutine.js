@@ -13,6 +13,7 @@ import {
 import { TextInput } from "react-native-paper";
 import GradientButton from "react-native-gradient-buttons";
 
+import DefaultButton from "../Button.js";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -137,46 +138,22 @@ const SetNameRoutine = ({ navigation, route }) => {
           />
         </View>
 
-        <GradientButton
+        <DefaultButton
           text="Next"
-          textStyle={{ fontSize: 18 }}
-          style={{
-            marginTop: windowHeight * 0.08,
-
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
-
-            elevation: 3,
-            borderRadius: 7,
-          }}
-          gradientBegin="#0359e3"
-          gradientEnd="#0041b1"
-          gradientDirection="radial"
+          textStyle={{ fontSize: 19 }}
           height={45}
           width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
-          radius={7}
-          impact
-          impactStyle="Light"
           onPressAction={
             () => navigation.navigate("SetAttributeRoutine", routine) // pass routine as parameter of this route
           } // navigation.navigate("NameScreen")}
         />
-        <GradientButton
+        <DefaultButton
           text="Back"
-          textStyle={{ fontSize: 14, color: "#0359e3" }}
-          style={{ marginVertical: 20 }}
-          gradientBegin={styles.container.backgroundColor}
-          gradientEnd={styles.container.backgroundColor}
-          gradientDirection="radial"
+          type="white"
           height={40}
           width={windowWidth / 4 >= 120 ? 120 : windowWidth / 4}
-          radius={7}
-          impactStyle="Light"
+          // radius={7}
+          // impactStyle="Light"
           onPressAction={() => navigation.navigate("FirstScreen")} // user don't want to add new routine so we don't pass routine back
           // navigation.navigate("NameScreen")}
         />
