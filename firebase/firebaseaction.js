@@ -37,8 +37,19 @@ const changeSetting = (uid, setting) => {
       console.log(error);
     });
 };
-
-const fetchAchivement = () => {};
+// it should fetch the first achivement of new routine after create
+// but i still have no idea what should be fetched
+// or it should be fetch after an achivement is completed
+const fetchAchivement = () => {
+  achiveRef
+    .doc(uid)
+    .collection("Achivement")
+    .limit(1)
+    .catch((error) => {
+      alert(error);
+      console.log(error);
+    });
+};
 const updateAchivement = (uid, achivement) => {
   usersRef
     .doc(uid)
@@ -49,5 +60,23 @@ const updateAchivement = (uid, achivement) => {
       console.log(error);
     });
 };
-
-export { onLoginPress, addRoutine, changeSetting, updateAchivement };
+// should be fetch when enter my achivement
+const fetchMyAchivement = (n) => {
+  usersRef
+    .doc(uid)
+    .collection("Achivement")
+    .orderBy("name") // need to confirm what should be fetch first
+    .limit(n) // number of achivement need to be fetched
+    .catch((error) => {
+      alert(error);
+      console.log(error);
+    });
+};
+export {
+  onLoginPress,
+  addRoutine,
+  changeSetting,
+  updateAchivement,
+  fetchAchivement,
+  fetchMyAchivement,
+};
