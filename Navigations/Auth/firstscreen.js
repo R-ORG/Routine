@@ -3,6 +3,8 @@ import React from "react";
 import { StyleSheet, View, Image, Dimensions, Alert } from "react-native";
 import GradientButton from "react-native-gradient-buttons";
 
+import RButton from "../Button.js";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -118,6 +120,19 @@ const FirstScreen = ({ navigation }) => {
         radius={7}
         impactStyle="Light"
         onPressAction={() => navigation.navigate("SetNameRoutine")}
+      />
+
+      <GradientButton
+        text="Test - Achievement"
+        textStyle={{ fontSize: 14, color: "#888" }}
+        gradientBegin={styles.container.backgroundColor}
+        gradientEnd={styles.container.backgroundColor}
+        gradientDirection="radial"
+        height={40}
+        width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
+        radius={7}
+        impactStyle="Light"
+        onPressAction={() => navigation.navigate("Achieve")}
       />
     </View>
   );

@@ -24,6 +24,8 @@ export function DefautlButton(props) {
           ? props.onPressAction
           : alert("will add more features in future")
       }
+      text={props.text}
+      textStyle={props.textStyle}
     ></GradientButton>
   ) : (
     <GradientButton
@@ -40,8 +42,6 @@ export function DefautlButton(props) {
           ? props.onPressAction
           : alert("will add more features in future")
       }
-      text={props.text}
-      textStyle={props.textStyle}
     ></GradientButton>
   );
 }
