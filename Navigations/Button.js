@@ -24,7 +24,7 @@ export function DefautlButton(props) {
       onPressAction={
         props.onPressAction
           ? props.onPressAction
-          : alert("will add more features in future")
+          : () => alert("will add more features in future")
       }
     ></GradientButton>
   ) : (
@@ -44,7 +44,7 @@ export function DefautlButton(props) {
       onPressAction={
         props.onPressAction
           ? props.onPressAction
-          : alert("will add more features in future")
+          : () => alert("will add more features in future")
       }
     ></GradientButton>
   );
