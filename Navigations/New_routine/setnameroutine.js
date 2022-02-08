@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -9,7 +9,7 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
-
+import { DefaultTextInput } from "../TextInput.js";
 import { TextInput } from "react-native-paper";
 import GradientButton from "react-native-gradient-buttons";
 
@@ -40,7 +40,12 @@ const showAlert = (alertTitle, alertText) =>
 const SetNameRoutine = ({ navigation, route }) => {
   const [isActive, setIsActive] = React.useState(false);
   // first time enter this route (route.params is null) we need to create new routine
-  let routine = !route.params ? { name: "", att: "", icon: "" } : route.params;
+  const [rname, setName] = useState("");
+  let routine = {
+    name: rname,
+    att: "",
+    icon: "",
+  };
   const customTheme = isActive
     ? {
         //isFocused
@@ -124,17 +129,11 @@ const SetNameRoutine = ({ navigation, route }) => {
             justifyContent: "center",
           }}
         >
-          <TextInput
-            theme={customTheme}
-            style={customStyle}
-            placeholder="Abc"
-            placeholderTextColor="#aab"
-            underlineColor="fff"
-            selectionColor="#abf"
-            value={routine.name}
-            onChangeText={(text) => (routine.name = text)}
-            onFocus={() => setIsActive(true)}
-            onBlur={() => setIsActive(false)}
+          <DefaultTextInput
+            height={10}
+            width={150}
+            value={rname}
+            onChangeText={(text) => setName(text)}
           />
         </View>
 
