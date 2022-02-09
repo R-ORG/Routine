@@ -11,6 +11,9 @@ import {
 import { TextInput } from "react-native-paper";
 import GradientButton from "react-native-gradient-buttons";
 
+import RButton from "../Button.js";
+import RTextInput from "../TextInput";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -90,7 +93,7 @@ const NameScreen = ({ navigation }) => {
           You'd like to be called...{" "}
         </Text> */}
 
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             alignItems: "center",
@@ -109,9 +112,22 @@ const NameScreen = ({ navigation }) => {
             onFocus={() => setIsActive(true)}
             onBlur={() => setIsActive(false)}
           />
+        </View> */}
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <RTextInput
+            type="Text"
+            placeholder="Your name..."
+            height="50"
+            width="400"
+          ></RTextInput>
         </View>
-
-        <GradientButton
+        {/* <GradientButton
           text="Let's start!"
           textStyle={{ fontSize: 18 }}
           style={{
@@ -137,20 +153,29 @@ const NameScreen = ({ navigation }) => {
           impact
           impactStyle="Light"
           onPressAction={() => alert("In developing")} // navigation.navigate("NameScreen")}
-        />
-        <GradientButton
+        /> */}
+
+        <RButton
+          text="Let's start!"
+          style={{ marginVertical: windowHeight * 0.08 }}
+          height={45}
+          width={windowWidth / 2.2 >= 225 ? 225 : windowWidth / 2.2}
+          onPressAction={() => alert("In developing")}
+        >
+          {" "}
+        </RButton>
+
+        <RButton
+          type="invi"
           text="Back to Home"
           textStyle={{ fontSize: 14, color: "#0359e3" }}
-          style={{ marginVertical: 50 }}
-          gradientBegin={styles.container.backgroundColor}
-          gradientEnd={styles.container.backgroundColor}
-          gradientDirection="radial"
+          style={{}}
           height={40}
           width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
-          radius={7}
-          impactStyle="Light"
-          onPressAction={() => navigation.navigate("FirstScreen")} // navigation.navigate("NameScreen")}
-        />
+          onPressAction={() => navigation.navigate("FirstScreen")}
+        >
+          {" "}
+        </RButton>
       </View>
     </TouchableWithoutFeedback>
   );

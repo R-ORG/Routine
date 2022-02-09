@@ -9,7 +9,8 @@ const focusStyle = {
   shadowOpacity: 0.2,
   shadowRadius: 3,
   elevation: 3,
-  borderRadius: 5,
+  borderRadius: 7,
+  marginVertical: 5,
 };
 const blurStyle = {
   backgroundColor: "#f8f8f8",
@@ -22,7 +23,8 @@ const blurStyle = {
   shadowOpacity: 0.2,
   shadowRadius: 3,
 
-  borderRadius: 5,
+  borderRadius: 7,
   elevation: 3,
+  marginVertical: 5,
 };
 export { blurStyle, focusStyle };

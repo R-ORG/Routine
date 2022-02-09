@@ -87,11 +87,12 @@ const LoginScreen = ({ navigation }) => {
         <Image
           style={{
             marginTop: windowHeight * 0.05,
-            width: windowWidth / 3 >= 175 ? 175 : windowWidth / 3,
-            height: windowHeight / 12,
+            // width: windowWidth / 2 >= 175 ? 175 : windowWidth / 2,
+            width: windowWidth / 5.5,
+            height: windowHeight / 6.5,
             resizeMode: "contain",
           }}
-          source={require("../../assets/Routines_logo.png")}
+          source={require("../../assets/R_logo.png")}
         />
         <View
           style={{

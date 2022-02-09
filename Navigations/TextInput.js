@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { TextInput } from "react-native-paper";
 import * as styles from "../style/generalstyle";
 import * as themes from "../style/generaltheme";
@@ -57,4 +57,4 @@ function DefautlTextInput(props) {
     ))
   ));
 }
-export { DefautlTextInput };
+export default DefautlTextInput;

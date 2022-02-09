@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, View, Image, Dimensions, Alert } from "react-native";
-import GradientButton from "react-native-gradient-buttons";
+import { StyleSheet, View, Image, Dimensions, Alert, Text } from "react-native";
 
 import RButton from "../Button.js";
 
@@ -41,7 +40,7 @@ const FirstScreen = ({ navigation }) => {
         source={require("../../assets/Routines_logo.png")}
       />
 
-      <GradientButton
+      {/* <GradientButton
         text="USING THIS DEVICE ONLY"
         textStyle={{ fontSize: 18 }}
         style={{
@@ -66,9 +65,28 @@ const FirstScreen = ({ navigation }) => {
         impact
         impactStyle="Light"
         onPressAction={() => navigation.navigate("NameScreen")} //showAlert("Device only", "In developing")}
-      />
+      /> */}
 
-      <GradientButton
+      <RButton
+        text="USING THIS DEVICE ONLY"
+        height={45}
+        width={windowWidth / 1.5 >= 350 ? 350 : windowWidth / 1.5}
+        onPressAction={() => navigation.navigate("NameScreen")}
+      >
+        {" "}
+      </RButton>
+
+      <RButton
+        type="white"
+        text="LOG IN AND SYNC"
+        height={45}
+        width={windowWidth / 1.5 >= 350 ? 350 : windowWidth / 1.5}
+        onPressAction={() => navigation.navigate("LoginScreen")}
+      >
+        {" "}
+      </RButton>
+
+      {/* <GradientButton
         text="LOG IN AND SYNC"
         textStyle={{ fontSize: 18, color: "#0359e3" }}
         style={{
@@ -92,9 +110,9 @@ const FirstScreen = ({ navigation }) => {
         impact
         impactStyle="Light"
         onPressAction={() => navigation.navigate("LoginScreen")}
-      />
+      /> */}
 
-      <GradientButton
+      {/* <GradientButton
         text="Not having an account? Sign up"
         textStyle={{ fontSize: 14, color: "#0359e3" }}
         style={{ marginVertical: 50 }}
@@ -106,9 +124,84 @@ const FirstScreen = ({ navigation }) => {
         radius={7}
         impactStyle="Light"
         onPressAction={() => navigation.navigate("SignUpScene")}
+      /> */}
+
+      {/* <Text
+        style={{
+          marginVertical: 50,
+          fontSize: 14,
+          color: "#0359e3",
+          fontWeight: "bold",
+        }}
+        onPress={() => navigation.navigate("SignUpScene")}
+      >
+        {" "}
+        Not having an account? Sign up{" "}
+      </Text> */}
+
+      <RButton
+        style={{ marginVertical: 50 }}
+        type="invi"
+        text="Not having an account? Sign up"
+        textStyle={{ fontSize: 14, color: "#0359e3" }}
+        height={20}
+        width={windowWidth / 1.5 >= 320 ? 320 : windowWidth / 1.5}
+        radius={7}
+        impactStyle="Light"
+        onPressAction={() => navigation.navigate("SignUpScene")}
       />
 
-      <GradientButton
+      {/* <Text
+        style={{
+          marginVertical: 20,
+          fontSize: 14,
+          color: "#888",
+          fontWeight: "bold",
+        }}
+        onPress={() => navigation.navigate("SetNameRoutine")}
+      >
+        {" "}
+        Test - Naming new routine{" "}
+      </Text> */}
+
+      <RButton
+        type="invi"
+        text="Test - Naming new routine"
+        style={{ marginVertical: 20 }}
+        textStyle={{ fontSize: 14, color: "#888" }}
+        height={20}
+        width={windowWidth / 2 >= 300 ? 300 : windowWidth / 2}
+        radius={7}
+        impactStyle="Light"
+        onPressAction={() => navigation.navigate("SetNameRoutine")}
+      />
+
+      <RButton
+        type="invi"
+        text="Test - Achievement"
+        style={{ marginVertical: 20 }}
+        textStyle={{ fontSize: 14, color: "#888" }}
+        height={20}
+        width={windowWidth / 2 >= 300 ? 300 : windowWidth / 2}
+        radius={7}
+        impactStyle="Light"
+        onPressAction={() => navigation.navigate("Achieve")}
+      />
+
+      {/* <Text
+        style={{
+          marginVertical: 20,
+          fontSize: 14,
+          color: "#888",
+          fontWeight: "bold",
+        }}
+        onPress={() => navigation.navigate("Achieve")}
+      >
+        {" "}
+        Test - Achievement{" "}
+      </Text> */}
+
+      {/* <GradientButton
         text="Test - Naming new routine"
         textStyle={{ fontSize: 14, color: "#888" }}
         style={{ marginVertical: 30 }}
@@ -120,9 +213,9 @@ const FirstScreen = ({ navigation }) => {
         radius={7}
         impactStyle="Light"
         onPressAction={() => navigation.navigate("SetNameRoutine")}
-      />
+      /> */}
 
-      <GradientButton
+      {/* <GradientButton
         text="Test - Achievement"
         textStyle={{ fontSize: 14, color: "#888" }}
         gradientBegin={styles.container.backgroundColor}
@@ -133,7 +226,7 @@ const FirstScreen = ({ navigation }) => {
         radius={7}
         impactStyle="Light"
         onPressAction={() => navigation.navigate("Achieve")}
-      />
+      /> */}
     </View>
   );
 };
