@@ -1,60 +1,72 @@
-import React, { useState } from "react";
+// import { useState } from "react";
+import React from "react";
 import { TextInput } from "react-native-paper";
 import * as styles from "../style/generalstyle";
 import * as themes from "../style/generaltheme";
-function DefautlTextInput(props) {
-  const [isFocus, setFocus] = useState(false);
-  const [value, setValue] = useState("");
-  return (props.type = "Text" ? (
+//
+function DefaultTextInput(props) {
+  const [isFocus, setFocus] = React.useState(false);
+  return (
     <TextInput
       placeholderTextColor={
         props.placeholderTextColor ? props.placeholderTextColor : "#aab"
       }
+      width={props.width}
+      height={props.height}
       style={isFocus ? styles.focusStyle : styles.blurStyle}
       theme={isFocus ? themes.focusTheme : themes.blurTheme}
-      onChangeText={(value) => setValue(value)}
+      onChangeText={(text) => props.onChangeText(text)}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
       placeholder={props.placeholder}
-      value={value}
+      value={props.value}
       underlineColor={props.underlineColor ? props.underlineColor : "fff"}
       selectionColor={props.underlineColor ? props.underlineColor : "abf"}
     ></TextInput>
-  ) : (
-    (props.type = "Number" ? (
-      <TextInput
-        placeholderTextColor={
-          props.placeholderTextColor ? props.placeholderTextColor : "#aab"
-        }
-        style={isFocus ? styles.focusStyle : styles.blurStyle}
-        theme={isFocus ? themes.focusTheme : themes.blurTheme}
-        onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
-        placeholder={props.placeholder}
-        underlineColor={props.underlineColor ? props.underlineColor : "fff"}
-        selectionColor={props.underlineColor ? props.underlineColor : "abf"}
-        onChangeText={(value) => setValue(value)}
-        value={value}
-        keyboardType={"number-pad"}
-        textAlign={props.textAlign ? props.textAlign : "center"}
-      ></TextInput>
-    ) : (
-      <TextInput
-        placeholderTextColor={
-          props.placeholderTextColor ? props.placeholderTextColor : "#aab"
-        }
-        style={isFocus ? styles.focusStyle : styles.blurStyle}
-        theme={isFocus ? themes.focusTheme : themes.blurTheme}
-        onChangeText={(value) => setValue(value)}
-        onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
-        placeholder={props.placeholder}
-        value={value}
-        underlineColor={props.underlineColor ? props.underlineColor : "fff"}
-        selectionColor={props.underlineColor ? props.underlineColor : "abf"}
-        secureTextEntry={true}
-      ></TextInput>
-    ))
-  ));
+  );
 }
-export default DefautlTextInput;
+function DefaultNumberInput(props) {
+  const [isFocus, setFocus] = React.useState(false);
+  return (
+    <TextInput
+      placeholderTextColor={
+        props.placeholderTextColor ? props.placeholderTextColor : "#aab"
+      }
+      width={props.width}
+      height={props.height}
+      style={isFocus ? styles.focusStyle : styles.blurStyle}
+      theme={isFocus ? themes.focusTheme : themes.blurTheme}
+      onChangeText={(text) => props.onChangeText(text)}
+      onFocus={() => setFocus(true)}
+      onBlur={() => setFocus(false)}
+      placeholder={props.placeholder}
+      value={props.value}
+      underlineColor={props.underlineColor ? props.underlineColor : "fff"}
+      selectionColor={props.underlineColor ? props.underlineColor : "abf"}
+      keyboardType={"number-pad"}
+    ></TextInput>
+  );
+}
+function DefaultPassWordInput(props) {
+  const [isFocus, setFocus] = React.useState(false);
+  return (
+    <TextInput
+      placeholderTextColor={
+        props.placeholderTextColor ? props.placeholderTextColor : "#aab"
+      }
+      width={props.width}
+      height={props.height}
+      style={isFocus ? styles.focusStyle : styles.blurStyle}
+      theme={isFocus ? themes.focusTheme : themes.blurTheme}
+      onChangeText={(text) => props.onChangeText(text)}
+      onFocus={() => setFocus(true)}
+      onBlur={() => setFocus(false)}
+      placeholder={props.placeholder}
+      value={props.value}
+      underlineColor={props.underlineColor ? props.underlineColor : "fff"}
+      selectionColor={props.underlineColor ? props.underlineColor : "abf"}
+      secureTextEntry={true}
+    />
+  );
+}
+export { DefaultTextInput, DefaultNumberInput, DefaultPassWordInput };
