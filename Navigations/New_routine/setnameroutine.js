@@ -9,11 +9,9 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
-import { DefaultTextInput } from "../TextInput.js";
-import { TextInput } from "react-native-paper";
-import GradientButton from "react-native-gradient-buttons";
+import { DefaultTextInput as RTextInput } from "../TextInput.js";
 
-import DefaultButton from "../Button.js";
+import RButton from "../Button.js";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -129,7 +127,7 @@ const SetNameRoutine = ({ navigation, route }) => {
             justifyContent: "center",
           }}
         >
-          <DefaultTextInput
+          <RTextInput
             height={10}
             width={150}
             value={rname}
@@ -137,7 +135,7 @@ const SetNameRoutine = ({ navigation, route }) => {
           />
         </View>
 
-        <DefaultButton
+        <RButton
           text="Next"
           textStyle={{ fontSize: 19 }}
           height={45}
@@ -146,7 +144,7 @@ const SetNameRoutine = ({ navigation, route }) => {
             () => navigation.navigate("SetAttributeRoutine", routine) // pass routine as parameter of this route
           } // navigation.navigate("NameScreen")}
         />
-        <DefaultButton
+        <RButton
           text="Back"
           type="white"
           height={40}

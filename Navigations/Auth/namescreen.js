@@ -9,10 +9,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { TextInput } from "react-native-paper";
-import GradientButton from "react-native-gradient-buttons";
 
 import RButton from "../Button.js";
-import RTextInput from "../TextInput";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -83,7 +81,7 @@ const NameScreen = ({ navigation }) => {
           source={require("../../assets/Routines_logo.png")}
         />
 
-        {/*<Text
+        {/* <Text
           style={{
             marginVertical: 10,
             color: "#555", //"#0359e3",
@@ -93,7 +91,7 @@ const NameScreen = ({ navigation }) => {
           You'd like to be called...{" "}
         </Text> */}
 
-        {/* <View
+        <View
           style={{
             flexDirection: "row",
             alignItems: "center",
@@ -112,48 +110,7 @@ const NameScreen = ({ navigation }) => {
             onFocus={() => setIsActive(true)}
             onBlur={() => setIsActive(false)}
           />
-        </View> */}
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <RTextInput
-            type="Text"
-            placeholder="Your name..."
-            height="50"
-            width="400"
-          ></RTextInput>
         </View>
-        {/* <GradientButton
-          text="Let's start!"
-          textStyle={{ fontSize: 18 }}
-          style={{
-            marginTop: windowHeight * 0.08,
-
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
-
-            elevation: 3,
-            borderRadius: 7,
-          }}
-          gradientBegin="#0359e3"
-          gradientEnd="#0041b1"
-          gradientDirection="radial"
-          height={45}
-          width={windowWidth / 2.2 >= 225 ? 225 : windowWidth / 2.2}
-          radius={7}
-          impact
-          impactStyle="Light"
-          onPressAction={() => alert("In developing")} // navigation.navigate("NameScreen")}
-        /> */}
 
         <RButton
           text="Let's start!"
@@ -161,9 +118,7 @@ const NameScreen = ({ navigation }) => {
           height={45}
           width={windowWidth / 2.2 >= 225 ? 225 : windowWidth / 2.2}
           onPressAction={() => alert("In developing")}
-        >
-          {" "}
-        </RButton>
+        />
 
         <RButton
           type="invi"
@@ -173,9 +128,7 @@ const NameScreen = ({ navigation }) => {
           height={40}
           width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
           onPressAction={() => navigation.navigate("FirstScreen")}
-        >
-          {" "}
-        </RButton>
+        />
       </View>
     </TouchableWithoutFeedback>
   );

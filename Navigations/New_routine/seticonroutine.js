@@ -10,8 +10,10 @@ import {
   TouchableWithoutFeedback,
   Picker,
 } from "react-native";
-import GradientButton from "react-native-gradient-buttons";
 import { addRoutine } from "../../firebase/firebaseaction";
+
+import RButton from "../Button.js";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 import { firebase } from "../../firebase/config";
@@ -76,7 +78,7 @@ const SetIconRoutine = ({ navigation, route }) => {
           <Picker.Item label="    ✅    Alert 3" value="al3" />
         </Picker>
 
-        <GradientButton
+        {/* <GradientButton
           text="Done"
           textStyle={{ fontSize: 18 }}
           style={{
@@ -109,8 +111,8 @@ const SetIconRoutine = ({ navigation, route }) => {
               : navigation.navigate("NameScreen");
             console.log(routine);
           }} // navigation.navigate("NameScreen")}
-        />
-        <GradientButton
+        /> */}
+        {/* <GradientButton
           text="Back"
           textStyle={{ fontSize: 14, color: "#0359e3" }}
           style={{ marginVertical: 20 }}
@@ -125,7 +127,37 @@ const SetIconRoutine = ({ navigation, route }) => {
             () => navigation.navigate("SetAttributeRoutine", routine)
             //pass routine back to set attribute to keep other routine info like name and attribute
           } // navigation.navigate("NameScreen")}
+        /> */}
+
+        <RButton
+          text="Done"
+          style={{ marginVertical: windowHeight * 0.08 }}
+          height={45}
+          width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
+          onPressAction={() => {
+            routine.icon = routineIcon;
+            let user = firebase.auth().currentUser;
+            user
+              ? addRoutine(user.uid, routine)
+              : navigation.navigate("NameScreen");
+            console.log(routine);
+          }}
         />
+
+        <RButton
+          type="invi"
+          text="Back"
+          textStyle={{ fontSize: 14, color: "#0359e3" }}
+          style={{}}
+          height={40}
+          width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
+          onPressAction={
+            () => navigation.navigate("SetAttributeRoutine", routine)
+            //pass routine back to set attribute to keep other routine info like name and attribute
+          }
+        >
+          {" "}
+        </RButton>
       </View>
     </TouchableWithoutFeedback>
   );

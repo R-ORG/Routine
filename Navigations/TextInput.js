@@ -20,8 +20,8 @@ function DefaultTextInput(props) {
       onBlur={() => setFocus(false)}
       placeholder={props.placeholder}
       value={props.value}
-      underlineColor={props.underlineColor ? props.underlineColor : "fff"}
-      selectionColor={props.underlineColor ? props.underlineColor : "abf"}
+      underlineColor={props.underlineColor ? props.underlineColor : "#fff"}
+      selectionColor={props.underlineColor ? props.underlineColor : "#abf"}
     ></TextInput>
   );
 }
@@ -41,8 +41,8 @@ function DefaultNumberInput(props) {
       onBlur={() => setFocus(false)}
       placeholder={props.placeholder}
       value={props.value}
-      underlineColor={props.underlineColor ? props.underlineColor : "fff"}
-      selectionColor={props.underlineColor ? props.underlineColor : "abf"}
+      underlineColor={props.underlineColor ? props.underlineColor : "#fff"}
+      selectionColor={props.underlineColor ? props.underlineColor : "#abf"}
       keyboardType={"number-pad"}
     ></TextInput>
   );
@@ -63,8 +63,8 @@ function DefaultPassWordInput(props) {
       onBlur={() => setFocus(false)}
       placeholder={props.placeholder}
       value={props.value}
-      underlineColor={props.underlineColor ? props.underlineColor : "fff"}
-      selectionColor={props.underlineColor ? props.underlineColor : "abf"}
+      underlineColor={props.underlineColor ? props.underlineColor : "#fff"}
+      selectionColor={props.underlineColor ? props.underlineColor : "#abf"}
       secureTextEntry={true}
     />
   );

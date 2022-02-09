@@ -224,6 +224,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: windowHeight * 0.1 + 22,
     width: windowWidth * 0.9,
+    marginTop: 5,
   },
   item: {
     flexDirection: "row",
@@ -245,6 +246,7 @@ const styles = StyleSheet.create({
   largeText: {
     color: "#fff",
     fontSize: 24,
+    fontWeight: "bold",
   },
   smallText: {
     color: "#fff",
