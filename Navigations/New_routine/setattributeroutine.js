@@ -90,6 +90,8 @@ const SetAttributeRoutine = ({ navigation, route }) => {
               onPressAction={() => setIsDo(false)}
               width={windowWidth / 4}
               height={windowWidth / 4}
+              gradientBegin={"#C00000"}
+              gradientEnd={"#880000"}
             />
           </View>
           <View
