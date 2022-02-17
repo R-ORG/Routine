@@ -12,6 +12,7 @@ import {
 import { DefaultTextInput as RTextInput } from "../TextInput.js";
 
 import RButton from "../Button.js";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -38,11 +39,13 @@ const showAlert = (alertTitle, alertText) =>
 const SetNameRoutine = ({ navigation, route }) => {
   const [isActive, setIsActive] = React.useState(false);
   // first time enter this route (route.params is null) we need to create new routine
-  const [rname, setName] = useState("");
+  const [rname, setName] = useState(route.params ? route.params.name : "");
+  const [ratt, setAtt] = useState(route.params ? route.params.att : "");
+  const [ricon, setIcon] = useState(route.params ? route.params.icon : "");
   let routine = {
     name: rname,
-    att: "",
-    icon: "",
+    att: ratt,
+    icon: ricon,
   };
   const customTheme = isActive
     ? {
@@ -134,23 +137,22 @@ const SetNameRoutine = ({ navigation, route }) => {
             onChangeText={(text) => setName(text)}
           />
         </View>
-
-        <RButton
-          text="Next"
-          textStyle={{ fontSize: 19 }}
-          height={45}
-          width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
-          onPressAction={
-            () => navigation.navigate("SetAttributeRoutine", routine) // pass routine as parameter of this route
-          } // navigation.navigate("NameScreen")}
-        />
+        <TouchableOpacity disabled={rname == ""}>
+          <RButton
+            text="Next"
+            textStyle={{ fontSize: 19 }}
+            height={45}
+            width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
+            onPressAction={
+              () => navigation.navigate("SetAttributeRoutine", routine) // pass routine as parameter of this route
+            } // navigation.navigate("NameScreen")}
+          />
+        </TouchableOpacity>
         <RButton
           text="Back"
           type="white"
           height={40}
           width={windowWidth / 4 >= 120 ? 120 : windowWidth / 4}
-          // radius={7}
-          // impactStyle="Light"
           onPressAction={() => navigation.navigate("FirstScreen")} // user don't want to add new routine so we don't pass routine back
           // navigation.navigate("NameScreen")}
         />

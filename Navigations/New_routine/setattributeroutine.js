@@ -9,7 +9,9 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   Picker,
+  Touchable,
 } from "react-native";
+import RButton from "../Button.js";
 import * as style from "../../style/generalstyle";
 import { TextInput } from "react-native-paper";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -27,16 +29,24 @@ GradientButton.defaultProps = {
 };
 const SetAttributeRoutine = ({ navigation, route }) => {
   const [isDo, setIsDo] = useState(true); // to do or not to do
-  const [routineType, setRoutineType] = useState("a");
+  const [routineType, setRoutineType] = useState("");
   const [reps, setReps] = useState("");
   const [repsFocus, setFocus] = useState(false);
   const [duration, setDuration] = useState(new Date());
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    Platform.OS === "ios" ? setShow(true) : shetShow(false);
+  const [isShow, setShow] = useState(false);
+  const onPickDuration = (event, selectedDate) => {
+    setShow(false);
+    const currentDate = selectedDate || duration;
     setDuration(currentDate);
   };
-  let routine = route.params;
+  const [rname, setName] = useState(route.params ? route.params.name : "");
+  const [ratt, setAtt] = useState(route.params ? route.params.att : "");
+  const [ricon, setIcon] = useState(route.params ? route.params.icon : "");
+  let routine = {
+    name: rname,
+    att: ratt,
+    icon: ricon,
+  };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
@@ -66,18 +76,17 @@ const SetAttributeRoutine = ({ navigation, route }) => {
               justifyContent: "center",
             }}
           >
-            <GradientButton
+            <RButton
+              type={isDo ? "blue" : "white"}
               text="To Do"
-              textStyle={{ fontSize: 18 }}
-              style={isDo ? style.blurStyle : style.focusStyle}
+              // style={isDo ? style.focusStyle : style.blurStyle}
               onPressAction={() => setIsDo(true)}
               width={windowWidth / 4}
               height={windowWidth / 4}
             />
-            <GradientButton
+            <RButton
+              type={!isDo ? "blue" : "white"}
               text="Not To Do"
-              textStyle={{ fontSize: 18 }}
-              style={!isDo ? style.blurStyle : style.focusStyle}
               onPressAction={() => setIsDo(false)}
               width={windowWidth / 4}
               height={windowWidth / 4}
@@ -90,27 +99,31 @@ const SetAttributeRoutine = ({ navigation, route }) => {
               justifyContent: "center",
             }}
           >
-            <GradientButton
+            <RButton
+              type={routineType == "Duration" ? "blue" : "white"}
               text="Duration"
-              textStyle={{ fontSize: 18 }}
-              style={
-                routineType == "Duration" ? style.blurStyle : style.focusStyle
-              }
-              onPressAction={() => setRoutineType("Duration")}
+              // textStyle={{ fontSize: 18 }}
+              // style={
+              //   routineType == "Duration" ? style.blurStyle : style.focusStyle
+              // }
+              onPressAction={() => {
+                setRoutineType("Duration");
+                setShow(true);
+              }}
               width={windowWidth / 4}
               height={windowWidth / 6}
             />
-            <GradientButton
+            <RButton
+              type={routineType == "Reps" ? "blue" : "white"}
               text="Reps"
-              textStyle={{ fontSize: 18 }}
               style={routineType == "Reps" ? style.blurStyle : style.focusStyle}
               onPressAction={() => setRoutineType("Reps")}
               width={windowWidth / 6}
               height={windowWidth / 6}
             />
-            <GradientButton
+            <RButton
+              type={routineType == "..." ? "blue" : "white"}
               text="..."
-              textStyle={{ fontSize: 18 }}
               style={routineType == "..." ? style.blurStyle : style.focusStyle}
               onPressAction={() => alert("will add more options in future")}
               width={windowWidth / 6}
@@ -126,14 +139,14 @@ const SetAttributeRoutine = ({ navigation, route }) => {
               width: windowWidth,
             }}
           >
-            {routineType == "Duration" && (
+            {routineType == "Duration" && isShow == true && (
               <DateTimePicker
                 value={duration}
                 is24Hour={true}
                 mode={"time"}
                 display={"spinner"}
-                onChange={onChange}
-              /> // show time picker if type is duration
+                onChange={onPickDuration}
+              />
             )}
             {
               routineType == "Reps" && (
@@ -155,7 +168,7 @@ const SetAttributeRoutine = ({ navigation, route }) => {
               ) //show text input if type is reps
             }
           </View>
-          <GradientButton
+          <RButton
             text="Next"
             textStyle={{ fontSize: 18 }}
             marginTop={windowHeight * 0.08}
@@ -164,16 +177,17 @@ const SetAttributeRoutine = ({ navigation, route }) => {
                 ? (routine.att = { isDo: isDo, reps: reps })
                 : (routine.att = { isDo: isDo, duration: duration });
               navigation.navigate("SetIconRoutine", routine);
-            }} // navigation.navigate("NameScreen")}
+            }}
           />
-          <GradientButton
+          <RButton
             text="Back"
             textStyle={{ fontSize: 14, color: "#0359e3" }}
             style={{ marginVertical: 20 }}
-            gradientBegin={styles.container.backgroundColor}
-            gradientEnd={styles.container.backgroundColor}
-            gradientDirection="radial"
-            onPressAction={() => navigation.navigate("SetNameRoutine", routine)} // navigation.navigate("NameScreen")}
+            type="white"
+            // gradientBegin={styles.container.backgroundColor}
+            // gradientEnd={styles.container.backgroundColor}
+            // gradientDirection="radial"
+            onPressAction={() => navigation.navigate("SetNameRoutine", routine)}
           />
         </View>
       </View>
