@@ -4,9 +4,14 @@ import { focusStyle, blurStyle } from "../style/generalstyle.js";
 import { focusTheme, blurTheme } from "../style/generaltheme.js";
 export function DefautlButton(props) {
   const [isFocus, setFocus] = useState(true);
+  const onPressAction = () => {
+    setFocus(!isFocus);
+    props.onPressAction ? props.onPressAction() : alert("On working...");
+  };
   if (props.type == "white")
     return (
       <GradientButton
+        disabled={props.disabled ? props.disabled : false}
         style={props.style ? props.style : isFocus ? focusStyle : blurStyle}
         theme={props.theme ? props.theme : isFocus ? focusTheme : blurTheme}
         height={props.height}
@@ -19,11 +24,7 @@ export function DefautlButton(props) {
         }
         radius={props.radius ? props.radius : 7}
         impactStyle={props.impactStyle ? props.impactStyle : "Light"}
-        onPressAction={
-          props.onPressAction
-            ? props.onPressAction
-            : () => alert("On working...")
-        }
+        onPressAction={onPressAction}
         text={props.text}
         textStyle={
           props.textStyle ? props.textStyle : { fontSize: 18, color: "#0359e3" }
@@ -34,6 +35,7 @@ export function DefautlButton(props) {
   if (props.type == "invi")
     return (
       <GradientButton
+        disabled={props.disabled ? props.disabled : false}
         style={props.style ? props.style : isFocus ? focusStyle : blurStyle}
         theme={props.theme ? props.theme : isFocus ? focusTheme : blurTheme}
         height={props.height}
@@ -56,6 +58,7 @@ export function DefautlButton(props) {
   else
     return (
       <GradientButton
+        disabled={props.disabled ? props.disabled : false}
         style={props.style ? props.style : isFocus ? focusStyle : blurStyle}
         theme={props.theme ? props.theme : isFocus ? focusTheme : blurTheme}
         height={props.height}
@@ -67,11 +70,7 @@ export function DefautlButton(props) {
         }
         radius={props.radius ? props.radius : 7}
         impactStyle={props.impactStyle ? props.impactStyle : "Light"}
-        onPressAction={
-          props.onPressAction
-            ? props.onPressAction
-            : () => alert("On working...")
-        }
+        onPressAction={onPressAction}
         text={props.text}
         textStyle={
           props.textStyle ? props.textStyle : { fontSize: 18, color: "#fff" }
