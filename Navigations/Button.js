@@ -25,7 +25,6 @@ export function DefautlButton(props) {
         radius={props.radius ? props.radius : 7}
         impactStyle={props.impactStyle ? props.impactStyle : "Light"}
         onPressAction={onPressAction}
-        text={props.text}
         textStyle={
           props.textStyle ? props.textStyle : { fontSize: 18, color: "#0359e3" }
         }
