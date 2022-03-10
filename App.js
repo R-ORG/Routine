@@ -12,6 +12,7 @@ import SetNameRoutine from "./Navigations/New_routine/setnameroutine"; //testing
 import SetAttributeRoutine from "./Navigations/New_routine/setattributeroutine"; //test
 import SetIconRoutine from "./Navigations/New_routine/seticonroutine"; //testing
 import AchieveScreen from "./Navigations/Auth/achievescreen";
+import RoutineScreen from "./Navigations/Auth/routine";
 import { firebase } from "./firebase/config";
 
 // Main Screen
@@ -103,6 +104,11 @@ export default function App() {
             <Stack.Screen
               name="Achieve"
               component={AchieveScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Routine"
+              component={RoutineScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
