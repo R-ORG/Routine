@@ -54,8 +54,51 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-              name="Home"
-              component={HomeScreen}
+              name="FirstScreen"
+              component={FirstScreen}
+              options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
+              name="NameScreen"
+              component={NameScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="LoginScreen"
+              component={LoginScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SignUpScene"
+              component={SignUpScreen}
+              options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
+              name="SetNameRoutine"
+              component={SetNameRoutine}
+              options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
+              name="SetIconRoutine"
+              component={SetIconRoutine}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="SetAttributeRoutine"
+              component={SetAttributeRoutine}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Achieve"
+              component={AchieveScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Routine"
+              component={RoutineScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
