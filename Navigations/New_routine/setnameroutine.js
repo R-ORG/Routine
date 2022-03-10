@@ -137,17 +137,19 @@ const SetNameRoutine = ({ navigation, route }) => {
             onChangeText={(text) => setName(text)}
           />
         </View>
-        <TouchableOpacity disabled={rname == ""}>
-          <RButton
-            text="Next"
-            textStyle={{ fontSize: 19 }}
-            height={45}
-            width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
-            onPressAction={
-              () => navigation.navigate("SetAttributeRoutine", routine) // pass routine as parameter of this route
-            } // navigation.navigate("NameScreen")}
-          />
-        </TouchableOpacity>
+        <RButton
+          text="Next"
+          textStyle={{ fontSize: 19 }}
+          height={45}
+          width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
+          onPressAction={
+            rname == ""
+              ? () => {
+                  alert("Name can't be empty");
+                }
+              : () => navigation.navigate("SetAttributeRoutine", routine) // pass routine as parameter of this route
+          } // navigation.navigate("NameScreen")}
+        />
         <RButton
           text="Back"
           type="white"

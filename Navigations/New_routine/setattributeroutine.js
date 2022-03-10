@@ -38,6 +38,7 @@ const SetAttributeRoutine = ({ navigation, route }) => {
     setShow(false);
     const currentDate = selectedDate || duration;
     setDuration(currentDate);
+    // console.log(currentDate);
   };
   const [rname, setName] = useState(route.params ? route.params.name : "");
   const [ratt, setAtt] = useState(route.params ? route.params.att : "");
@@ -90,8 +91,9 @@ const SetAttributeRoutine = ({ navigation, route }) => {
               onPressAction={() => setIsDo(false)}
               width={windowWidth / 4}
               height={windowWidth / 4}
-              gradientBegin={"#C00000"}
-              gradientEnd={"#880000"}
+              gradientBegin={!isDo ? "#C00000" : null}
+              gradientEnd={!isDo ? "#880000" : null}
+              textStyle={!isDo ? null : { fontSize: 18, color: "#C00000" }}
             />
           </View>
           <View
@@ -157,7 +159,6 @@ const SetAttributeRoutine = ({ navigation, route }) => {
                   theme={repsFocus ? style.focusStyle : style.blurStyle}
                   placeholder="numer of reps"
                   placeholderTextColor="#aab"
-                  placeholderTextColor="#aab"
                   underlineColor="fff"
                   selectionColor="#abf"
                   onChangeText={(reps) => setReps(reps)}
@@ -177,7 +178,15 @@ const SetAttributeRoutine = ({ navigation, route }) => {
             onPressAction={() => {
               routineType == "Reps"
                 ? (routine.att = { isDo: isDo, reps: reps })
-                : (routine.att = { isDo: isDo, duration: duration });
+                : (routine.att = {
+                    isDo: isDo,
+                    duration: {
+                      hours: duration.getHours(),
+                      minutes: duration.getMinutes(),
+                      secs: duration.getSeconds(),
+                    },
+                  });
+              // console.log(routine);
               navigation.navigate("SetIconRoutine", routine);
             }}
           />
