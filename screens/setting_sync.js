@@ -86,11 +86,14 @@ const SettingSync = () => {
     )
 }
 
+export default SettingSync;
+
 const styles = StyleSheet.create({
     container: {
         width: windowWidth,
         height: windowHeight,
         padding: 30,
+        paddingTop: 50
     },
     settingoption: {
         display: 'flex',
@@ -115,23 +118,22 @@ const styles = StyleSheet.create({
     heading: {
         textTransform: 'uppercase',
         color: '#0359e3',
-        fontSize: 36,
+        fontSize: 30,
         fontWeight: '500'
     },
     option: {
         textTransform: 'capitalize',
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: '600',
         textAlignVertical: 'center'
     },
     name: {
         color: '#0359e3',
         textTransform: 'capitalize',
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: '600',
         textAlignVertical: 'center'
     }
 
 })
 
-export default SettingSync 
