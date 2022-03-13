@@ -20,92 +20,108 @@ const RoutineScreen = ({ navigation }) => {
         {
             id: "1",
             name: "RUN 03 MILES",
-            current: "0",
-            total: "3",
+            image: require("./emoji/drink.jpg"),
+            current: 0,
+            total: 3,
+            unit: "",
             category: 'todo',
             state: 'doing',
             ftime: "01/02/2022",
             avgdone: 100,
-            lstreak: "10",
-            cstreak: "10"
+            lstreak: 10,
+            cstreak: 10
         },
         {
             id: "2",
             name: "DRINK WATER",
-            current: "1",
-            total: "4",
+            image: require("./emoji/drink.jpg"),
+            current: 1,
+            total: 4,
+            unit: "",
             category: 'todo',
             state: 'doing',
             ftime: "01/02/2022",
             avgdone: 100,
-            lstreak: "10",
-            cstreak: "10"
+            lstreak: 10,
+            cstreak: 10
         },
         {
             id: "3",
             name: "DON'T SMOKE",
-            current: "18h",
-            total: "24h",
+            image: require("./emoji/drink.jpg"),
+            current: 18,
+            total: 24,
+            unit: "h",
             category: 'nottodo',
             state: 'doing',
             ftime: "01/02/2022",
             avgdone: 100,
-            lstreak: "10",
-            cstreak: "10"
+            lstreak: 10,
+            cstreak: 10
         },
         {
             id: "4",
             name: "DRINK WATER",
-            current: "1",
-            total: "4",
+            image: require("./emoji/drink.jpg"),
+            current: 1,
+            total: 4,
+            unit: "",
             category: 'todo',
             state: 'doing',
             ftime: "01/02/2022",
             avgdone: 100,
-            lstreak: "10",
-            cstreak: "10"
+            lstreak: 10,
+            cstreak: 10
         },
         {
             id: "5",
             name: "DRINK WATER",
-            current: "1",
-            total: "4",
+            image: require("./emoji/drink.jpg"),
+            current: 1,
+            total: 4,
+            unit: "",
             category: 'todo',
             state: 'doing',
             ftime: "01/02/2022",
             avgdone: 100,
-            lstreak: "10",
-            cstreak: "10"
+            lstreak: 10,
+            cstreak: 10
         },
         {
             id: "6",
             name: "Get up 5h",
-            current: "7d",
-            total: "7d",
+            image: require("./emoji/drink.jpg"),
+            current: 7,
+            total: 7,
+            unit: "d",
             category: "todo",
             state: "completed",
             ftime: "01/02/2022",
             avgdone: 100,
-            lstreak: "10",
-            cstreak: "10"
+            lstreak: 10,
+            cstreak: 10
         },
         {
             id: "7",
             name: "Tiktok 180 minutes",
-            current: "7d",
-            total: "7d",
+            image: require("./emoji/drink.jpg"),
+            current: 7,
+            total: 7,
+            unit: "d",
             category: "nottodo",
             state: "completed",
             ftime: "01/02/2022",
             avgdone: 100,
-            lstreak: "10",
-            cstreak: "10"
+            lstreak: 10,
+            cstreak: 10
         }
     ]
     // State to update data
     const [currentData, setCurrentData] = useState(data);
     // State to render loading
     const [isLoading, setIsLoading] = useState(false);
+    // State to check load all
+    const [loadAll, setLoadAll] = useState(false);
 
     const [fontsLoaded, error] = useFonts({Roboto_300Light, Roboto_500Medium, Roboto_700Bold, Roboto_900Black});
     if (!fontsLoaded) {
@@ -121,10 +137,12 @@ const RoutineScreen = ({ navigation }) => {
                 renderItem={
                     ({item}) => 
                     <RCard 
-                    name={item.name} 
-                    current={item.current} 
-                    total={item.total} 
-                    category={item.category} 
+                    name={item.name}
+                    image={item.image}
+                    current={item.current}
+                    total={item.total}
+                    unit={item.unit}
+                    category={item.category}
                     state={item.state}
                     ftime={item.ftime}
                     avgdone={item.avgdone}
@@ -133,6 +151,9 @@ const RoutineScreen = ({ navigation }) => {
                     />
                 }
                 ListFooterComponent={() => {
+                    if (loadAll) {
+                        return null;
+                    }
                     return (
                         isLoading ? 
                         <View style={{
@@ -153,9 +174,14 @@ const RoutineScreen = ({ navigation }) => {
                 onEndReached={() => {
                     setIsLoading(true)
                     setTimeout(() => {
-                        // Add data if loading
-                        setCurrentData(data.concat([ 
-                        ]))
+                        // Get data from database
+                        const listNewData = []
+                        if (listNewData.length === 0) {
+                            setLoadAll(true);
+                            return;
+                        } 
+                        setLoadAll(false);
+                        setCurrentData(data.concat(listNewData));
                         setIsLoading(false)
                     }, 2000);
                 }}

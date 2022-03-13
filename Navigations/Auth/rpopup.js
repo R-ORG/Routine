@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, View, Dimensions} from "react-native";
+import { Text, StyleSheet, View, Dimensions } from "react-native";
 import GradientButton from "react-native-gradient-buttons";
 
 const windowWidth = Dimensions.get("window").width;
@@ -14,7 +14,7 @@ const RPopup = (props) => {
                         <Text style={[styles.largeText, {color: props.color_1}]}>{props.name}</Text>
                     </View>
                     <View style={{flex: 4, flexDirection: 'row', justifyContent: 'flex-end'}}>
-                        <Text style={[styles.largeText, {color: props.color_1}]}>{props.current}/{props.total}</Text>
+                        <Text style={[styles.largeText, {color: props.color_1}]}>{props.current}{props.unit}/{props.total}{props.unit}</Text>
                     </View>
                 </View>
                 <View style={{flex: 25, flexDirection: 'row'}}>

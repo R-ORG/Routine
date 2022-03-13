@@ -98,6 +98,8 @@ const AchieveScreen = ({ navigation }) => {
     const [currentData, setCurrentData] = useState(data);
     // State to render loading
     const [isLoading, setIsLoading] = useState(false);
+    // State to check load all
+    const [loadAll, setLoadAll] = useState(false);
 
     const [fontsLoaded, error] = useFonts({Roboto_300Light, Roboto_500Medium, Roboto_700Bold, Roboto_900Black});
     if (!fontsLoaded) {
@@ -113,6 +115,9 @@ const AchieveScreen = ({ navigation }) => {
                 keyExtractor={item => item.id}
                 renderItem={({item}) => <ACard top={item.top} down={item.down} image={item.image} state={item.state}/>}
                 ListFooterComponent={() => {
+                    if (loadAll) {
+                        return null;
+                    }
                     return (
                         isLoading ? 
                         <View style={{
@@ -133,8 +138,8 @@ const AchieveScreen = ({ navigation }) => {
                 onEndReached={() => {
                     setIsLoading(true)
                     setTimeout(() => {
-                        // Add data if loading
-                        setCurrentData(data.concat([ 
+                        // Get data from database
+                        const listNewData = [ 
                             {
                                 id: "11",
                                 name: "Item 11",
@@ -159,7 +164,13 @@ const AchieveScreen = ({ navigation }) => {
                                 image: require("./emoji/smile.png"),
                                 state: "locked",
                             } 
-                        ]))
+                        ]
+                        if (listNewData.length === 0) {
+                            setLoadAll(true);
+                            return;
+                        }
+                        setLoadAll(false);
+                        setCurrentData(data.concat(listNewData))
                         setIsLoading(false)
                     }, 2000);
                 }}

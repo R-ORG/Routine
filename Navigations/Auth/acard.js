@@ -4,6 +4,10 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
+const widthBackground = windowWidth * 0.9;
+const heightBackground = windowHeight * 0.145;
+const widthItem = windowWidth * 0.8;
+const heightItem = windowHeight * 0.115;
 
 const ACard = (props) => {
     var color_1 = '#205ae0';
@@ -62,13 +66,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        width: windowWidth * 0.9,
-        height: windowHeight * 0.145,
+        width: widthBackground,
+        height: heightBackground,
     },
     item: {
         flexDirection: 'row',
-        width: windowWidth * 0.8,
-        height: windowHeight * 0.115,
+        width: widthItem,
+        height: heightItem,
         margin: 5,
         borderRadius: 10,
     },
@@ -86,13 +90,13 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
         justifyContent: 'center',
         alignItems: 'center',
-        width: windowWidth * 0.9 * 0.25,
+        width: widthBackground * 0.25,
         height: windowHeight * 0.135,
         borderRadius: 150 / 2,
         overflow: 'hidden',
     },
     image: {
-        width: windowWidth * 0.9 * 0.2,
+        width: widthBackground * 0.2,
         height: windowHeight * 0.105,
     },
     largeText: {
