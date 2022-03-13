@@ -13,6 +13,8 @@ import { TextInput } from "react-native-paper";
 import GradientButton from "react-native-gradient-buttons";
 import { firebase } from "../../firebase/config";
 
+import RButton from "../Button.js";
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -87,11 +89,12 @@ const LoginScreen = ({ navigation }) => {
         <Image
           style={{
             marginTop: windowHeight * 0.05,
-            width: windowWidth / 3 >= 175 ? 175 : windowWidth / 3,
-            height: windowHeight / 12,
+            // width: windowWidth / 2 >= 175 ? 175 : windowWidth / 2,
+            width: windowWidth / 5.5,
+            height: windowHeight / 6.5,
             resizeMode: "contain",
           }}
-          source={require("../../assets/Routines_logo.png")}
+          source={require("../../assets/R_logo.png")}
         />
         <View
           style={{
@@ -180,45 +183,28 @@ const LoginScreen = ({ navigation }) => {
             />
           </View>
         </View>
-        <GradientButton
-          text="Login"
-          textStyle={{ fontSize: 18 }}
-          style={{
-            marginTop: windowHeight * 0.05,
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
 
-            elevation: 3,
-            borderRadius: 7,
-          }}
-          gradientBegin="#0359e3"
-          gradientEnd="#0041b1"
-          gradientDirection="radial"
+        <RButton
+          text="Log in"
+          style={{ marginTop: windowHeight * 0.08 }}
           height={45}
-          width={windowWidth / 2.5 >= 210 ? 210 : windowWidth / 2.5}
-          radius={7}
-          impact
-          impactStyle="Light"
-          onPressAction={() => onLoginPress()} //need authorize function
-        />
-        <GradientButton
+          width={windowWidth / 2.5 >= 200 ? 200 : windowWidth / 2.5}
+          onPressAction={() => onLoginPress()}
+        >
+          {" "}
+        </RButton>
+
+        <RButton
+          type="invi"
           text="Back to Home"
           textStyle={{ fontSize: 14, color: "#0359e3" }}
           style={{ marginVertical: 35 }}
-          gradientBegin={styles.container.backgroundColor}
-          gradientEnd={styles.container.backgroundColor}
-          gradientDirection="radial"
           height={40}
           width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
-          radius={7}
-          impactStyle="Light"
-          onPressAction={() => navigation.navigate("FirstScreen")} //need authorize function
-        />
+          onPressAction={() => navigation.navigate("FirstScreen")}
+        >
+          {" "}
+        </RButton>
       </View>
     </TouchableWithoutFeedback>
   );

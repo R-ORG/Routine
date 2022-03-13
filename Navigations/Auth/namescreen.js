@@ -9,7 +9,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { TextInput } from "react-native-paper";
-import GradientButton from "react-native-gradient-buttons";
+
+import RButton from "../Button.js";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -80,7 +81,7 @@ const NameScreen = ({ navigation }) => {
           source={require("../../assets/Routines_logo.png")}
         />
 
-        {/*<Text
+        {/* <Text
           style={{
             marginVertical: 10,
             color: "#555", //"#0359e3",
@@ -111,45 +112,22 @@ const NameScreen = ({ navigation }) => {
           />
         </View>
 
-        <GradientButton
+        <RButton
           text="Let's start!"
-          textStyle={{ fontSize: 18 }}
-          style={{
-            marginTop: windowHeight * 0.08,
-
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
-
-            elevation: 3,
-            borderRadius: 7,
-          }}
-          gradientBegin="#0359e3"
-          gradientEnd="#0041b1"
-          gradientDirection="radial"
+          style={{ marginVertical: windowHeight * 0.08 }}
           height={45}
           width={windowWidth / 2.2 >= 225 ? 225 : windowWidth / 2.2}
-          radius={7}
-          impact
-          impactStyle="Light"
-          onPressAction={() => alert("In developing")} // navigation.navigate("NameScreen")}
+          onPressAction={() => alert("In developing")}
         />
-        <GradientButton
+
+        <RButton
+          type="invi"
           text="Back to Home"
           textStyle={{ fontSize: 14, color: "#0359e3" }}
-          style={{ marginVertical: 50 }}
-          gradientBegin={styles.container.backgroundColor}
-          gradientEnd={styles.container.backgroundColor}
-          gradientDirection="radial"
+          style={{}}
           height={40}
           width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
-          radius={7}
-          impactStyle="Light"
-          onPressAction={() => navigation.navigate("FirstScreen")} // navigation.navigate("NameScreen")}
+          onPressAction={() => navigation.navigate("FirstScreen")}
         />
       </View>
     </TouchableWithoutFeedback>

@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -9,10 +9,10 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from "react-native";
+import { DefaultTextInput as RTextInput } from "../TextInput.js";
 
-import { TextInput } from "react-native-paper";
-import GradientButton from "react-native-gradient-buttons";
-
+import RButton from "../Button.js";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -36,9 +36,17 @@ const showAlert = (alertTitle, alertText) =>
     }
   );
 
-const SetNameRoutine = ({ navigation }) => {
-  const [text, setText] = React.useState("");
+const SetNameRoutine = ({ navigation, route }) => {
   const [isActive, setIsActive] = React.useState(false);
+  // first time enter this route (route.params is null) we need to create new routine
+  const [rname, setName] = useState(route.params ? route.params.name : "");
+  const [ratt, setAtt] = useState(route.params ? route.params.att : "");
+  const [ricon, setIcon] = useState(route.params ? route.params.icon : "");
+  let routine = {
+    name: rname,
+    att: ratt,
+    icon: ricon,
+  };
   const customTheme = isActive
     ? {
         //isFocused
@@ -122,59 +130,31 @@ const SetNameRoutine = ({ navigation }) => {
             justifyContent: "center",
           }}
         >
-          <TextInput
-            theme={customTheme}
-            style={customStyle}
-            placeholder="Abc"
-            placeholderTextColor="#aab"
-            underlineColor="fff"
-            selectionColor="#abf"
-            value={text}
-            onChangeText={(text) => setText(text)}
-            onFocus={() => setIsActive(true)}
-            onBlur={() => setIsActive(false)}
+          <RTextInput
+            height={10}
+            width={150}
+            value={rname}
+            onChangeText={(text) => setName(text)}
           />
         </View>
-
-        <GradientButton
-          text="Next"
-          textStyle={{ fontSize: 18 }}
-          style={{
-            marginTop: windowHeight * 0.08,
-
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
-
-            elevation: 3,
-            borderRadius: 7,
-          }}
-          gradientBegin="#0359e3"
-          gradientEnd="#0041b1"
-          gradientDirection="radial"
-          height={45}
-          width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
-          radius={7}
-          impact
-          impactStyle="Light"
-          onPressAction={() => navigation.navigate("SetAttributeRoutine")} // navigation.navigate("NameScreen")}
-        />
-        <GradientButton
+        <TouchableOpacity disabled={rname == ""}>
+          <RButton
+            text="Next"
+            textStyle={{ fontSize: 19 }}
+            height={45}
+            width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
+            onPressAction={
+              () => navigation.navigate("SetAttributeRoutine", routine) // pass routine as parameter of this route
+            } // navigation.navigate("NameScreen")}
+          />
+        </TouchableOpacity>
+        <RButton
           text="Back"
-          textStyle={{ fontSize: 14, color: "#0359e3" }}
-          style={{ marginVertical: 20 }}
-          gradientBegin={styles.container.backgroundColor}
-          gradientEnd={styles.container.backgroundColor}
-          gradientDirection="radial"
+          type="white"
           height={40}
           width={windowWidth / 4 >= 120 ? 120 : windowWidth / 4}
-          radius={7}
-          impactStyle="Light"
-          onPressAction={() => navigation.navigate("FirstScreen")} // navigation.navigate("NameScreen")}
+          onPressAction={() => navigation.navigate("FirstScreen")} // user don't want to add new routine so we don't pass routine back
+          // navigation.navigate("NameScreen")}
         />
       </View>
     </TouchableWithoutFeedback>

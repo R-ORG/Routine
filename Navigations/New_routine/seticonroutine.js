@@ -10,18 +10,20 @@ import {
   TouchableWithoutFeedback,
   Picker,
 } from "react-native";
-import GradientButton from "react-native-gradient-buttons";
+import { addRoutine } from "../../firebase/firebaseaction";
+
+import RButton from "../Button.js";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-
-const SetIconRoutine = ({ navigation }) => {
+import { firebase } from "../../firebase/config";
+const SetIconRoutine = ({ navigation, route }) => {
   const [text, setText] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [Color, setColor] = useState("#555");
   const [showIconPicker, setShowIconPicker] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("java");
-
+  let routine = route.params;
+  const [routineIcon, setSelectedValue] = useState(routine.icon);
   const onSelect = (icon) => {
     setShowIconPicker(false); // fix this
   };
@@ -54,7 +56,7 @@ const SetIconRoutine = ({ navigation }) => {
         </Text>
 
         <Picker
-          selectedValue={selectedValue}
+          selectedValue={routineIcon}
           style={{ height: 50, width: 250, shadowColor: "#000" }}
           onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         >
@@ -76,7 +78,7 @@ const SetIconRoutine = ({ navigation }) => {
           <Picker.Item label="    ✅    Alert 3" value="al3" />
         </Picker>
 
-        <GradientButton
+        {/* <GradientButton
           text="Done"
           textStyle={{ fontSize: 18 }}
           style={{
@@ -101,9 +103,16 @@ const SetIconRoutine = ({ navigation }) => {
           radius={7}
           impact
           impactStyle="Light"
-          onPressAction={() => alert("In developing")} // navigation.navigate("NameScreen")}
-        />
-        <GradientButton
+          onPressAction={() => {
+            routine.icon = routineIcon;
+            let user = firebase.auth().currentUser;
+            user
+              ? addRoutine(user.uid, routine)
+              : navigation.navigate("NameScreen");
+            console.log(routine);
+          }} // navigation.navigate("NameScreen")}
+        /> */}
+        {/* <GradientButton
           text="Back"
           textStyle={{ fontSize: 14, color: "#0359e3" }}
           style={{ marginVertical: 20 }}
@@ -114,8 +123,41 @@ const SetIconRoutine = ({ navigation }) => {
           width={windowWidth / 4 >= 120 ? 120 : windowWidth / 4}
           radius={7}
           impactStyle="Light"
-          onPressAction={() => navigation.navigate("SetAttributeRoutine")} // navigation.navigate("NameScreen")}
+          onPressAction={
+            () => navigation.navigate("SetAttributeRoutine", routine)
+            //pass routine back to set attribute to keep other routine info like name and attribute
+          } // navigation.navigate("NameScreen")}
+        /> */}
+
+        <RButton
+          text="Done"
+          style={{ marginVertical: windowHeight * 0.08 }}
+          height={45}
+          width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
+          onPressAction={() => {
+            routine.icon = routineIcon;
+            let user = firebase.auth().currentUser;
+            user
+              ? addRoutine(user.uid, routine)
+              : navigation.navigate("NameScreen");
+            console.log(routine);
+          }}
         />
+
+        <RButton
+          type="invi"
+          text="Back"
+          textStyle={{ fontSize: 14, color: "#0359e3" }}
+          style={{}}
+          height={40}
+          width={windowWidth / 1.6 >= 350 ? 350 : windowWidth / 1.6}
+          onPressAction={
+            () => navigation.navigate("SetAttributeRoutine", routine)
+            //pass routine back to set attribute to keep other routine info like name and attribute
+          }
+        >
+          {" "}
+        </RButton>
       </View>
     </TouchableWithoutFeedback>
   );

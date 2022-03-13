@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
+import FloatingActionButton from "./components/FloatingActionButton";
+import SettingLocal from "./screens/setting_local";
+import SettingSync from "./screens/setting_sync";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Auth Screen
 import FirstScreen from "./Navigations/Auth/firstscreen";

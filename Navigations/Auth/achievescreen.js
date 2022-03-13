@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { Text, StyleSheet, View} from "react-native";
+import React, { useState } from "react";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  ImageBackground,
+  Dimensions,
+  TouchableHighlight,
+} from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { ActivityIndicator } from "react-native-paper";
 import { useFonts, Roboto_300Light, Roboto_500Medium, Roboto_700Bold, Roboto_900Black } from "@expo-google-fonts/roboto";
