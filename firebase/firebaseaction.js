@@ -42,7 +42,18 @@ const changeSetting = (uid, setting) => {
     });
 };
 
-const fetchAchivement = () => {};
+const fetchMyAchivement = (n) => {
+  return usersRef
+    .doc(uid)
+    .collection("Achivement")
+    .orderBy("name") // need to confirm what should be fetch first
+    .limit(n) // number of achivement need to be fetched
+    .get()
+    .catch((error) => {
+      alert(error);
+      console.log(error);
+    });
+};
 const updateAchivement = (uid, achivement) => {
   usersRef
     .doc(uid)
@@ -60,4 +71,5 @@ export {
   fetchRoutine,
   changeSetting,
   updateAchivement,
+  fetchMyAchivement,
 };

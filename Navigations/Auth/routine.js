@@ -36,16 +36,39 @@ const RoutineScreen = ({ navigation }) => {
     try {
       var user = firebase.auth().currentUser;
       if (user) {
-        data = await fetchRoutine(user.uid);
+        snapshot = await fetchRoutine(user.uid);
+        data = snapshot.docs;
       } else {
         data = await AsyncStorage.getItem("Routine");
-        // console.log(JSON.parse(data));
+        data = JSON.parse(data);
       }
     } catch (e) {
       console.log(e);
     }
     // console.log(JSON.parse(data));
-    return data ? setCurrentData(JSON.parse(data)) : setCurrentData([]);
+
+    if (data) {
+      data.forEach((routine) => {
+        console.log(routine);
+        if (routine.att.duration) {
+          if (!routine.current) routine.current = 0;
+          let duration = routine.att.duration;
+          routine.total =
+            duration.hours +
+            "h " +
+            duration.minutes +
+            "m " +
+            duration.secs +
+            "s";
+        }
+        if (routine.att.reps) {
+          console.log(routine.att.reps);
+          routine.total = routine.att.reps;
+          if (!routine.current) routine.current = 0;
+        }
+      });
+      setCurrentData(data);
+    } else setCurrentData([]);
   }
 
   // console.log(currentData);
