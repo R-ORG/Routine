@@ -14,9 +14,10 @@ import { addRoutine } from "../../firebase/firebaseaction";
 
 import RButton from "../Button.js";
 
+import { firebase } from "../../firebase/config";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-import { firebase } from "../../firebase/config";
 const SetIconRoutine = ({ navigation, route }) => {
   const [text, setText] = useState("");
   const [isActive, setIsActive] = useState(false);
@@ -77,71 +78,43 @@ const SetIconRoutine = ({ navigation, route }) => {
           <Picker.Item label="    ❌    Alert 2" value="al2" />
           <Picker.Item label="    ✅    Alert 3" value="al3" />
         </Picker>
-
-        {/* <GradientButton
-          text="Done"
-          textStyle={{ fontSize: 18 }}
-          style={{
-            marginTop: windowHeight * 0.04,
-
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
-
-            elevation: 3,
-            borderRadius: 7,
-          }}
-          gradientBegin="#0359e3"
-          gradientEnd="#0041b1"
-          gradientDirection="radial"
-          height={45}
-          width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
-          radius={7}
-          impact
-          impactStyle="Light"
-          onPressAction={() => {
-            routine.icon = routineIcon;
-            let user = firebase.auth().currentUser;
-            user
-              ? addRoutine(user.uid, routine)
-              : navigation.navigate("NameScreen");
-            console.log(routine);
-          }} // navigation.navigate("NameScreen")}
-        /> */}
-        {/* <GradientButton
-          text="Back"
-          textStyle={{ fontSize: 14, color: "#0359e3" }}
-          style={{ marginVertical: 20 }}
-          gradientBegin={styles.container.backgroundColor}
-          gradientEnd={styles.container.backgroundColor}
-          gradientDirection="radial"
-          height={40}
-          width={windowWidth / 4 >= 120 ? 120 : windowWidth / 4}
-          radius={7}
-          impactStyle="Light"
-          onPressAction={
-            () => navigation.navigate("SetAttributeRoutine", routine)
-            //pass routine back to set attribute to keep other routine info like name and attribute
-          } // navigation.navigate("NameScreen")}
-        /> */}
-
         <RButton
           text="Done"
           style={{ marginVertical: windowHeight * 0.08 }}
           height={45}
           width={windowWidth / 3.5 >= 150 ? 150 : windowWidth / 3.5}
-          onPressAction={() => {
-            routine.icon = routineIcon;
-            let user = firebase.auth().currentUser;
-            user
-              ? addRoutine(user.uid, routine)
-              : navigation.navigate("NameScreen");
-            console.log(routine);
-          }}
+          onPressAction={
+            routineIcon == ""
+              ? () => alert("Must choose your icon")
+              : async () => {
+                  routine.icon = routineIcon;
+                  let user = firebase.auth().currentUser;
+                  // console.log(routine);
+                  try {
+                    let arr;
+                    await AsyncStorage.getItem("Routine").then((value) => {
+                      arr = value;
+                    });
+                    if (arr == null) arr = [];
+                    else arr = JSON.parse(arr);
+                    arr.push(routine);
+                    // console.log(JSON.stringify(arr));
+                    await AsyncStorage.setItem("Routine", JSON.stringify(arr));
+                    if (user) {
+                      addRoutine(user.uid, routine);
+                    }
+                    // let currentData = await AsyncStorage.getItem("Routine");
+                    // console.log(JSON.parse(currentData));
+                  } catch (e) {
+                    console.log(e);
+                  }
+                  // local storage reset
+                  // await AsyncStorage.clear();
+                  // let currentdata = AsyncStorage.getAllKeys();
+                  // console.log(currentdata);
+                  navigation.navigate("Routine");
+                }
+          }
         />
 
         <RButton

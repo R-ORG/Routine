@@ -29,7 +29,8 @@ const LoginScreen = ({ navigation }) => {
       .auth()
       .signInWithEmailAndPassword(user, password)
       .then((result) => {
-        console.log(result);
+        // console.log(result.user);
+        navigation.navigate("Routine");
       })
       .catch((error) => {
         alert(error);

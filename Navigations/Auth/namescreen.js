@@ -117,7 +117,7 @@ const NameScreen = ({ navigation }) => {
           style={{ marginVertical: windowHeight * 0.08 }}
           height={45}
           width={windowWidth / 2.2 >= 225 ? 225 : windowWidth / 2.2}
-          onPressAction={() => alert("In developing")}
+          onPressAction={() => navigation.navigate("Routine")}
         />
 
         <RButton
