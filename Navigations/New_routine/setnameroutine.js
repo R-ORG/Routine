@@ -152,8 +152,9 @@ const SetNameRoutine = ({ navigation, route }) => {
         />
         <RButton
           text="Back"
-          type="white"
+          type="invi"
           height={40}
+          textStyle={{ fontSize: 14, color: "#0359e3" }}
           width={windowWidth / 4 >= 120 ? 120 : windowWidth / 4}
           onPressAction={() => navigation.navigate("FirstScreen")} // user don't want to add new routine so we don't pass routine back
           // navigation.navigate("NameScreen")}

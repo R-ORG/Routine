@@ -118,7 +118,7 @@ const SetIconRoutine = ({ navigation, route }) => {
         />
 
         <RButton
-          type="invi"
+          type="white"
           text="Back"
           textStyle={{ fontSize: 14, color: "#0359e3" }}
           style={{}}

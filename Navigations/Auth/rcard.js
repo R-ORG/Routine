@@ -17,7 +17,7 @@ const windowHeight = Dimensions.get("window").height;
 const RCard = (props) => {
   var color_1 = "#0359E3";
   var color_2 = "#0041b1";
-  if (props.category === "nottodo") {
+  if (!props.category) {
     color_1 = "#C00000";
     color_2 = "#880000";
   }
@@ -64,7 +64,7 @@ const RCard = (props) => {
               }}
             >
               <View style={{ flex: 1 }}>
-                {props.category === "todo" && props.state !== "completed" ? (
+                {props.category && props.state !== "completed" ? (
                   <GradientButton
                     text="DO"
                     textStyle={[styles.normalText, { color: color_1 }]}
@@ -83,7 +83,7 @@ const RCard = (props) => {
               <View style={{ flex: 1 }}>
                 {props.state !== "completed" ? (
                   <GradientButton
-                    text={props.category === "todo" ? "DONE" : "GIVE UP"}
+                    text={props.category ? "DONE" : "GIVE UP"}
                     textStyle={[styles.normalText, { color: color_3 }]}
                     style={styles.button}
                     gradientBegin={color_1}
