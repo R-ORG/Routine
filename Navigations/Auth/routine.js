@@ -38,7 +38,8 @@ const RoutineScreen = ({ navigation }) => {
       var user = firebase.auth().currentUser;
       if (user) {
         snapshot = await fetchRoutine(user.uid);
-        data = snapshot.docs;
+        console.log(snapshot);
+        data = snapshot.data().docs;
       } else {
         data = await AsyncStorage.getItem("Routine");
         data = JSON.parse(data);
