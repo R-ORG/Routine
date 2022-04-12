@@ -28,9 +28,10 @@ const RoutineScreen = ({ navigation }) => {
   // State to render loading
   const [isLoading, setIsLoading] = useState(false);
   const [currentData, setCurrentData] = useState();
+  const [loadAll, setLoadAll] = useState(false);
   useEffect(() => {
     fetchdata();
-  });
+  }, []);
   async function fetchdata() {
     var data;
     try {
@@ -48,7 +49,7 @@ const RoutineScreen = ({ navigation }) => {
     // console.log(JSON.parse(data));
 
     if (data) {
-      data.forEach((routine) => {
+      data.forEach((routine, index) => {
         console.log(routine);
         if (routine.att.duration) {
           if (!routine.current) routine.current = 0;
@@ -108,9 +109,10 @@ const RoutineScreen = ({ navigation }) => {
       />
       <FlatList
         data={currentData}
-        keyExtractor={(item) => item.name}
-        renderItem={({ item }) => (
+        keyExtractor={(item) => item.index}
+        renderItem={({ item }, index) => (
           <RCard
+            key={index}
             name={item.name}
             current={item.current}
             total={item.total}
@@ -123,6 +125,9 @@ const RoutineScreen = ({ navigation }) => {
           />
         )}
         ListFooterComponent={() => {
+          if (loadAll) {
+            return null;
+          }
           return isLoading ? (
             <View
               style={{
@@ -147,6 +152,13 @@ const RoutineScreen = ({ navigation }) => {
           setIsLoading(true);
           setTimeout(() => {
             // Add data if loading
+            const listNewData = [];
+            if (listNewData.length === 0) {
+              setLoadAll(true);
+              return;
+            }
+            setLoadAll(false);
+            setCurrentData(currentData.concat(listNewData));
             setIsLoading(false);
           }, 2000);
         }}

@@ -35,7 +35,7 @@ export function DefautlButton(props) {
     return (
       <GradientButton
         disabled={props.disabled ? props.disabled : false}
-        style={props.style ? props.style : isFocus ? focusStyle : blurStyle}
+        style={props.style}
         theme={props.theme ? props.theme : isFocus ? focusTheme : blurTheme}
         height={props.height}
         width={props.width}
